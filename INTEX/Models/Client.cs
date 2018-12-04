@@ -10,6 +10,7 @@ namespace INTEX.Models
     [Table("Client")]
     public class Client
     {
+        [Key]
         [Display(Name ="Client ID")]
         public int ClientID { get; set; }
 
