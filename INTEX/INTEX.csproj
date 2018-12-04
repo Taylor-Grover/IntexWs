@@ -153,11 +153,17 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AssaysController.cs" />
+    <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+
+    <Compile Include="Controllers\Order_Assay_TestController.cs" />
+
     <Compile Include="Controllers\SamplesController.cs" />
     <Compile Include="Controllers\TestsController.cs" />
     <Compile Include="Controllers\WorkOrdersController.cs" />
     <Compile Include="Controllers\WorkOrder_CompoundController.cs" />
+
     <Compile Include="DAL\Northwest_LabsContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -210,6 +216,23 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+
+    <Content Include="Views\Clients\Create.cshtml" />
+    <Content Include="Views\Clients\Delete.cshtml" />
+    <Content Include="Views\Clients\Details.cshtml" />
+    <Content Include="Views\Clients\Edit.cshtml" />
+    <Content Include="Views\Clients\Index.cshtml" />
+    <Content Include="Views\Assays\Create.cshtml" />
+    <Content Include="Views\Assays\Delete.cshtml" />
+    <Content Include="Views\Assays\Details.cshtml" />
+    <Content Include="Views\Assays\Edit.cshtml" />
+    <Content Include="Views\Assays\Index.cshtml" />
+    <Content Include="Views\Order_Assay_Test\Create.cshtml" />
+    <Content Include="Views\Order_Assay_Test\Delete.cshtml" />
+    <Content Include="Views\Order_Assay_Test\Details.cshtml" />
+    <Content Include="Views\Order_Assay_Test\Edit.cshtml" />
+    <Content Include="Views\Order_Assay_Test\Index.cshtml" />
+
     <Content Include="Views\WorkOrder_Compound\Create.cshtml" />
     <Content Include="Views\WorkOrder_Compound\Delete.cshtml" />
     <Content Include="Views\WorkOrder_Compound\Details.cshtml" />
@@ -230,6 +253,7 @@
     <Content Include="Views\Tests\Details.cshtml" />
     <Content Include="Views\Tests\Edit.cshtml" />
     <Content Include="Views\Tests\Index.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

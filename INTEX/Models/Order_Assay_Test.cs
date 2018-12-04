@@ -11,13 +11,14 @@ namespace INTEX.Models
     [Table("Order_Assay_Test")]
     public class Order_Assay_Test
     {
+        [Key, Column(Order = 0)]
         [DisplayName("Order Number")]
         public int WorkOrderNumber { get; set; }
 
-        
+        [Key, Column(Order = 1)]
         public int AssayID { get; set; }
 
-        
+        [Key, Column(Order = 2)]
         public int TestID { get; set; }
 
         
