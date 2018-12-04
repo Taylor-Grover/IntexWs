@@ -156,7 +156,14 @@
     <Compile Include="Controllers\AssaysController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+
     <Compile Include="Controllers\Order_Assay_TestController.cs" />
+
+    <Compile Include="Controllers\SamplesController.cs" />
+    <Compile Include="Controllers\TestsController.cs" />
+    <Compile Include="Controllers\WorkOrdersController.cs" />
+    <Compile Include="Controllers\WorkOrder_CompoundController.cs" />
+
     <Compile Include="DAL\Northwest_LabsContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -209,6 +216,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+
     <Content Include="Views\Clients\Create.cshtml" />
     <Content Include="Views\Clients\Delete.cshtml" />
     <Content Include="Views\Clients\Details.cshtml" />
@@ -224,6 +232,28 @@
     <Content Include="Views\Order_Assay_Test\Details.cshtml" />
     <Content Include="Views\Order_Assay_Test\Edit.cshtml" />
     <Content Include="Views\Order_Assay_Test\Index.cshtml" />
+
+    <Content Include="Views\WorkOrder_Compound\Create.cshtml" />
+    <Content Include="Views\WorkOrder_Compound\Delete.cshtml" />
+    <Content Include="Views\WorkOrder_Compound\Details.cshtml" />
+    <Content Include="Views\WorkOrder_Compound\Edit.cshtml" />
+    <Content Include="Views\WorkOrder_Compound\Index.cshtml" />
+    <Content Include="Views\WorkOrders\Create.cshtml" />
+    <Content Include="Views\WorkOrders\Delete.cshtml" />
+    <Content Include="Views\WorkOrders\Details.cshtml" />
+    <Content Include="Views\WorkOrders\Edit.cshtml" />
+    <Content Include="Views\WorkOrders\Index.cshtml" />
+    <Content Include="Views\Samples\Create.cshtml" />
+    <Content Include="Views\Samples\Delete.cshtml" />
+    <Content Include="Views\Samples\Details.cshtml" />
+    <Content Include="Views\Samples\Edit.cshtml" />
+    <Content Include="Views\Samples\Index.cshtml" />
+    <Content Include="Views\Tests\Create.cshtml" />
+    <Content Include="Views\Tests\Delete.cshtml" />
+    <Content Include="Views\Tests\Details.cshtml" />
+    <Content Include="Views\Tests\Edit.cshtml" />
+    <Content Include="Views\Tests\Index.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

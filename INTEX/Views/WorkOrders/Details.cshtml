@@ -1,0 +1,74 @@
+﻿@model INTEX.Models.WorkOrder
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>WorkOrder</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DueDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DueDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaymentInfo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaymentInfo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LTNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LTNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SalesAgentID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalesAgentID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.WorkOrderNumber }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
