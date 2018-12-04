@@ -13,7 +13,11 @@ namespace INTEX.DAL
 
         }
 
+        public System.Data.Entity.DbSet<INTEX.Models.Client> Clients { get; set; }
 
+        public System.Data.Entity.DbSet<INTEX.Models.Assay> Assays { get; set; }
+
+        public System.Data.Entity.DbSet<INTEX.Models.Order_Assay_Test> Order_Assay_Test { get; set; }
     }
 
   
