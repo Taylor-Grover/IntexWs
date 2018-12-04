@@ -10,6 +10,7 @@ namespace INTEX.Models
     [Table("Sample")]
     public class Sample
     {
+        [Key]
         public int SequenceCode { get; set; }
 
         [Display(Name = "Compound Name")]
