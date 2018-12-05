@@ -53,7 +53,7 @@ namespace INTEX.Controllers
             workOrder.ClientID = ClientID;
             if (ModelState.IsValid)
             {
-                
+                workOrder.Complete = false;
                 workOrder.OrderDate = DateTime.Now;
                 db.WorkOrders.Add(workOrder);
                 db.SaveChanges();

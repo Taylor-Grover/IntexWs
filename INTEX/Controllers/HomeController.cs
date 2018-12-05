@@ -62,6 +62,11 @@ namespace INTEX.Controllers
             return View(client);
         }
 
+        public ActionResult ClientOrders(int? CID)
+        {
+            ViewBag.CID = 44;
+            return View(db.WorkOrders.ToList());
+        }
 
 
 

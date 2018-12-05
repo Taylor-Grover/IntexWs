@@ -33,7 +33,10 @@ namespace INTEX.Models
 
         [Display(Name = "Compound Name")]
         public string CompoundName { get; set; }
- 
+
+        [Display(Name = "Completion Status")]
+        public bool? Complete { get; set; }
+
         [Display(Name = "LT Number")]
         public int? LTNumber { get; set; }
  
