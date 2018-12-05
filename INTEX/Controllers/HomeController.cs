@@ -33,7 +33,7 @@ namespace INTEX.Controllers
 
         public ActionResult displayAssays(int myClientID)
         {
-
+            ViewBag.ClientID = myClientID;
             return View(db.Assays.ToList());
         }
 

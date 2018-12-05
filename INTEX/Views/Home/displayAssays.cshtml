@@ -37,7 +37,7 @@
             </td>
             <td>
                
-              <a href="@Url.Action("displayTests", "Tests", new { id = item.AssayID })">See Tests</a>
+              <a href="@Url.Action("displayTests", "Tests", new { id = item.AssayID, ClientID = ViewBag.ClientID })">See Tests</a>
                
             </td>
         </tr>
