@@ -1,0 +1,74 @@
+﻿@model INTEX.Models.Account
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Account</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Client.ClientFirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.ClientFirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountBalance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountBalance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberofOrders)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberofOrders)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientStartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SalesAgentID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalesAgentID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AccountID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
