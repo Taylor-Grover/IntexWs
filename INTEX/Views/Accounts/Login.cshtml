@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+<div class="white">
+    <h2>Login</h2>
+    <br />
+    <br />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="col-sm-2">
+                @Html.Label("User Name:")
+            </div>
+            <div class="col-sm-6">
+                @Html.TextBox("username", null, new { @class = "form-control" })
+            </div>
+        </div>
+        <br />
+        <br />
+        <div class="row">
+            <div class="col-sm-2">
+                @Html.Label("Password:")
+            </div>
+            <div class="col-sm-6">
+                @Html.Password("password", null, new { @class = "form-control" })
+                <p style="color: red">@ViewBag.Error</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <br />
+                    <br />
+                    <input type="submit" value="Submit" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+</div>

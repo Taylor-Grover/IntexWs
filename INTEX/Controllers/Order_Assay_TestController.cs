@@ -61,7 +61,10 @@ namespace INTEX.Controllers
                 db.SaveChanges();
             }
             Client myClient = db.Clients.Find(workOrderID);
-            return RedirectToAction("Summary", "Home", new { WOID = workOrderID, CID = myClient.ClientID, AID = AssayID });
+            //return RedirectToAction("Summary", "Home", new { WOID = workOrderID, CID = myClient.ClientID, AID = AssayID });
+            return View("displayAccount", "Accounts");
+
+            
 
             //return View(order_Assay_Test);
         }

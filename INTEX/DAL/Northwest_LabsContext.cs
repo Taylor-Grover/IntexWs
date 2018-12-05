@@ -31,6 +31,8 @@ namespace INTEX.DAL
         public System.Data.Entity.DbSet<INTEX.Models.displayTests> displayTests { get; set; }
 
         public System.Data.Entity.DbSet<INTEX.Models.Account> Accounts { get; set; }
+
+        public System.Data.Entity.DbSet<INTEX.Models.ClientAccount> ClientAccounts { get; set; }
     }
 
   

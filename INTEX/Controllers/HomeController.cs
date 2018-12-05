@@ -55,8 +55,9 @@ namespace INTEX.Controllers
                
                 db.Clients.Add(client);
                 db.SaveChanges();
-                int tempID = client.ClientID;
-                return RedirectToAction("Create", "WorkOrders", new {ClientID = tempID });
+                //int tempID = client.ClientID;
+                //return RedirectToAction("Create", "WorkOrders", new {ClientID = tempID });
+                return RedirectToAction("newAccount", "Accounts", client);
             }
 
             return View(client);

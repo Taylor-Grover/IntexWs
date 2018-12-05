@@ -167,6 +167,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\ClientAccount.cs" />
     <Compile Include="Models\displayTests.cs" />
     <Compile Include="Models\Order_Assay_Test.cs" />
     <Compile Include="Models\Test.cs" />
@@ -261,11 +262,10 @@
     <Content Include="Views\Accounts\Details.cshtml" />
     <Content Include="Views\Accounts\Edit.cshtml" />
     <Content Include="Views\Accounts\Index.cshtml" />
-
-    <Content Include="Views\Accounts\Login.cshtml" />
-
     <Content Include="Views\Home\ClientOrders.cshtml" />
-
+    <Content Include="Views\Accounts\Login.cshtml" />
+    <Content Include="Views\Accounts\newAccount.cshtml" />
+    <Content Include="Views\Accounts\displayAccount.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
