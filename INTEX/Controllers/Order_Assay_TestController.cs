@@ -37,7 +37,7 @@ namespace INTEX.Controllers
         }
 
         // GET: Order_Assay_Test/Create
-        public ActionResult Create()
+        public ActionResult Create(int workOrderID, int AssayID, int TestID)
         {
             return View();
         }
