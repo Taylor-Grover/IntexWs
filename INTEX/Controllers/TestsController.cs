@@ -127,7 +127,7 @@ namespace INTEX.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult displayTests(int id, int ClientID)
+        public ActionResult displayTests(int id, int myWorkOrderID)
         {
          IEnumerable<displayTests> myTests = db.Database.SqlQuery<displayTests>(
          "Select Test.TestID, Test.TestName, Test.Description, Test.BaseCost, " +

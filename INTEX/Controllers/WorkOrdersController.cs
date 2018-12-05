@@ -58,7 +58,7 @@ namespace INTEX.Controllers
                 db.WorkOrders.Add(workOrder);
                 db.SaveChanges();
                 
-                return RedirectToAction("displayAssays", "Home", new { myClientID = workOrder.ClientID });
+                return RedirectToAction("displayAssays", "Home", new { myWorkOrderID = workOrder.WorkOrderNumber });
             }
 
             return View(workOrder);

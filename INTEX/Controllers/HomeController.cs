@@ -31,9 +31,9 @@ namespace INTEX.Controllers
             return View();
         }
 
-        public ActionResult displayAssays(int myClientID)
+        public ActionResult displayAssays(int myWorkOrderID)
         {
-            ViewBag.ClientID = myClientID;
+            ViewBag.myWorkOrderID = myWorkOrderID;
             return View(db.Assays.ToList());
         }
 
