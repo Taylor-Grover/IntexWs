@@ -1,0 +1,17 @@
+﻿@model INTEX.Models.ClientAccount
+
+@{
+    ViewBag.Title = "displayAccount";
+}
+
+<h2>@Model.ClientFirstName <br />
+    @Model.ClientFirstName <br />
+    @Model.ClientLastName <br />
+    @Model.AccountID <br />
+    @Model.AccountBalance
+</h2>
+
+
+<a href="@Url.Action("ClientOrders", "Home", new { CID = Model.ClientID})">Track My Orders</a>
+<a href="">Quote</a>
+<a href="@Url.Action("Create", "WorkOrders", new { ClientID = Model.ClientID})">Create a New Order</a>

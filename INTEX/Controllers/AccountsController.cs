@@ -13,13 +13,14 @@ namespace INTEX.Controllers
 {
     public class AccountsController : Controller
     {
+        private static bool login = false;
         private Northwest_LabsContext db = new Northwest_LabsContext();
 
         // GET: Accounts
         public ActionResult Index()
         {
-            var accounts = db.Accounts.Include(a => a.Client);
-            return View(accounts.ToList());
+            
+            return View(db.Accounts.ToList());
         }
 
         // GET: Accounts/Details/5
@@ -129,5 +130,92 @@ namespace INTEX.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult displayAccount()
+        {
+
+
+
+            if (login == true)
+            {
+                
+                return View(clientaccount);
+            }
+            else
+            {
+                ViewBag.Error = "Enter a valid username and password";
+                return RedirectToAction("Login");
+            }
+        }
+        [HttpGet]
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(string username, string password)
+        {
+            Client currClient = new Client();
+           foreach(var item in db.Clients)
+            {
+                if(item.ClientEmail == username)
+                {
+                    currClient = item;
+                }
+            }
+
+
+            if(username != null && password != null)
+            {
+                login = true;
+                return RedirectToAction("displayAccount", currClient);
+            }
+            else { 
+            return View();
+        }
+        }
+
+        [HttpGet]
+        public ActionResult newAccount(Client currClient)
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult newAccount([Bind(Include = "Username,Password")] ClientAccount clientaccount, Client currClient)
+        {
+            Random randomNum = new Random();
+            int newAccountID = randomNum.Next(100000, 900000);
+            foreach (var item in db.Accounts)
+            {
+                if (item.AccountID == newAccountID)
+                {
+                    newAccountID = randomNum.Next(100000, 900000);
+                }
+            }
+
+            clientaccount.AccountID = newAccountID;
+            clientaccount.AccountBalance = 0;
+            clientaccount.ClientAddress = currClient.ClientAddress;
+            clientaccount.ClientEmail = currClient.ClientEmail;
+            clientaccount.ClientFirstName = currClient.ClientFirstName;
+            clientaccount.ClientLastName = currClient.ClientLastName;
+            clientaccount.ClientID = currClient.ClientID;
+            clientaccount.ClientPhone = currClient.ClientPhone;
+            clientaccount.NumberofOrders = 0;
+            clientaccount.ClientStartDate = DateTime.Today;
+
+            Account newAccount = new Account();
+            newAccount.AccountID = clientaccount.AccountID;
+            newAccount.AccountBalance = clientaccount.AccountBalance;
+            newAccount.ClientID = currClient.ClientID;
+            newAccount.ClientStartDate = clientaccount.ClientStartDate;
+            newAccount.NumberofOrders = clientaccount.NumberofOrders;
+            db.Accounts.Add(newAccount);
+            db.SaveChanges();
+
+            return View("displayAccount", clientaccount);
+        }
+
     }
 }
