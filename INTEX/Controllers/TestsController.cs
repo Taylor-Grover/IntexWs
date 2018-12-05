@@ -130,6 +130,8 @@ namespace INTEX.Controllers
 
         public ActionResult displayTests(int id, int? myWorkOrderID)
         {
+            ViewBag.workorderid = myWorkOrderID;
+            ViewBag.AssayID = id;
          IEnumerable<displayTests> myTests = db.Database.SqlQuery<displayTests>(
          "Select Test.TestID, Test.TestName, Test.Description, Test.BaseCost, " +
          "Assay_Test.IsRequired, Assay_Test.Conditional " +
@@ -137,6 +139,12 @@ namespace INTEX.Controllers
          "Test.TestID = Assay_Test.TestID " +
          "WHERE Assay_Test.AssayID = " + id);
 
+            List<int> listtest = new List<int>();
+            foreach(var item in myTests)
+            {
+                listtest.Add(item.TestID);
+            }
+            ViewBag.testIDs = listtest;
             return View(myTests);
         }
 

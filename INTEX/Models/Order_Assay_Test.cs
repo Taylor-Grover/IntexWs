@@ -22,16 +22,16 @@ namespace INTEX.Models
         public int TestID { get; set; }
 
         
-        public int EmployeeID { get; set; }
+        public int? EmployeeID { get; set; }
 
         [DisplayName("Complete?")]
         public bool? IsComplete  { get; set; }
 
         [DisplayName("Total Cost")]
-        public double TotalCost { get; set; }
+        public double? TotalCost { get; set; }
 
         
-        public int ResultID { get; set; }
+        public int? ResultID { get; set; }
 
     }
 }

@@ -169,6 +169,7 @@
     <Compile Include="Models\Order_Assay_Test.cs" />
     <Compile Include="Models\Test.cs" />
     <Compile Include="Models\Assay.cs" />
+    <Compile Include="Models\testid.cs" />
     <Compile Include="Models\WorkOrder.cs" />
     <Compile Include="Models\WorkOrder_Compound.cs" />
     <Compile Include="Models\Client.cs" />
