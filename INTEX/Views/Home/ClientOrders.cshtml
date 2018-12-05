@@ -1,0 +1,36 @@
+﻿@model IEnumerable<INTEX.Models.WorkOrder>
+@{
+    ViewBag.Title = "ClientOrders";
+}
+
+<h2>Client Orders</h2>
+
+@foreach (var item in Model)
+{
+    if (item.ClientID == ViewBag.CID)
+    {
+        <p>Work Order Number: @item.WorkOrderNumber</p>
+        <p>Order Date: @item.OrderDate</p>
+        <p>Compound Name: @item.CompoundName</p>
+        if (item.LTNumber == null)
+        {
+            <p>Compound is en route to the lab</p>
+            <p>Estimated time till completion: 10 days</p>
+        }
+        else
+        {
+            if (item.Complete == false || item.Complete == null)
+            {
+                <p>Compound is being tested</p>
+                <p>Estimated time till completion: 5 days</p>
+            }
+            else
+            {
+                <p>Tests are complete, reports are being compiled and sent to you.</p>
+                <p>Estimated time till completion: Complete</p>
+            }
+        }
+    }
+}
+
+

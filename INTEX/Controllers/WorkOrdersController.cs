@@ -48,12 +48,12 @@ namespace INTEX.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "WorkOrderNumber,OrderDate,DueDate,ClientID,PaymentInfo,Comments,LTNumber,SalesAgentID")] WorkOrder workOrder, int ClientID)
+        public ActionResult Create([Bind(Include = "WorkOrderNumber,OrderDate,DueDate,ClientID,PaymentInfo,Comments,CompoundName,LTNumber,SalesAgentID")] WorkOrder workOrder, int ClientID)
         {
             workOrder.ClientID = ClientID;
             if (ModelState.IsValid)
             {
-                
+                workOrder.Complete = false;
                 workOrder.OrderDate = DateTime.Now;
                 db.WorkOrders.Add(workOrder);
                 db.SaveChanges();

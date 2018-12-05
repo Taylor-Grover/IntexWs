@@ -19,5 +19,8 @@ namespace INTEX.Models
         public string AssayProtocol { get; set; }
         [Required]
         public string CompletionEstimate { get; set; }
+
+        
+        public virtual List<Test> myTests { get; set; }
     }
 }

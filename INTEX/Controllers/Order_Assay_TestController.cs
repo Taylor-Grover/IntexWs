@@ -37,7 +37,7 @@ namespace INTEX.Controllers
         }
 
         // GET: Order_Assay_Test/Create
-        public ActionResult Create(int workOrderID, int AssayID, List<int> TestIDs)
+        public ActionResult Create(int workOrderID, int AssayID)
         {
             return View();
         }
@@ -47,7 +47,7 @@ namespace INTEX.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "WorkOrderNumber,AssayID,TestID,EmployeeID,IsComplete,TotalCost,ResultID")] Order_Assay_Test order_Assay_Test, int workOrderID, int AssayID, List<int> TestIDs)
+        public ActionResult Create([Bind(Include = "WorkOrderNumber,AssayID,TestID,EmployeeID,IsComplete,TotalCost,ResultID")] Order_Assay_Test order_Assay_Test, int workOrderID, int AssayID)
         {
             List<int> testids = db.Database.SqlQuery<int>("SELECT TestID FROM Assay_Test WHERE Assay_Test.AssayID = " + AssayID).ToList();
 
@@ -60,10 +60,8 @@ namespace INTEX.Controllers
                 db.Order_Assay_Test.Add(record);
                 db.SaveChanges();
             }
-          
-            return RedirectToAction("Index");
-
-            
+            Client myClient = db.Clients.Find(workOrderID);
+            return RedirectToAction("Summary", "Home", new { WOID = workOrderID, CID = myClient.ClientID, AID = AssayID });
 
             //return View(order_Assay_Test);
         }

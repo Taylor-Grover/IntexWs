@@ -27,6 +27,12 @@
             @Html.DisplayNameFor(model => model.Comments)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.CompoundName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Complete)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.LTNumber)
         </th>
         <th>
@@ -53,15 +59,21 @@
             @Html.DisplayFor(modelItem => item.Comments)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.CompoundName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Complete)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.LTNumber)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.SalesAgentID)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.WorkOrderNumber }) |
-            @Html.ActionLink("Details", "Details", new { id=item.WorkOrderNumber }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.WorkOrderNumber })
+            @Html.ActionLink("Edit", "Edit", new { id = item.WorkOrderNumber }) |
+            @Html.ActionLink("Details", "Details", new { id = item.WorkOrderNumber }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.WorkOrderNumber })
         </td>
     </tr>
 }
