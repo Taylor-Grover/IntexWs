@@ -16,6 +16,6 @@ namespace INTEX.Models
         public string TestName { get; set; }
         public double BaseCost { get; set; }
 
-
+        public virtual List<Assay> myAssays { get; set; }
     }
 }
