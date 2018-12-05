@@ -47,7 +47,7 @@ namespace INTEX.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AssayID,AssayDescription,AssayProtocol,Compensation")] Assay assay)
+        public ActionResult Create([Bind(Include = "AssayID,AssayDescription,AssayProtocol,CompletionEstimate")] Assay assay)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace INTEX.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AssayID,AssayDescription,AssayProtocol,Compensation")] Assay assay)
+        public ActionResult Edit([Bind(Include = "AssayID,AssayDescription,AssayProtocol,CompletionEstimate")] Assay assay)
         {
             if (ModelState.IsValid)
             {
