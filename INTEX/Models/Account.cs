@@ -14,7 +14,7 @@ namespace INTEX.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int AccountID { get; set; }
              
-        public float AccountBalance { get; set; }
+        public double AccountBalance { get; set; }
 
         public int NumberofOrders { get; set; }
 
