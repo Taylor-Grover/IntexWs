@@ -11,29 +11,30 @@ namespace INTEX.Models
     public class WorkOrder
     {
         [Key]
-        [Required]
+      
         [Display(Name = "Work Order Number")]
-        public int  WorkOrderNumber { get; set; }
-        [Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int WorkOrderNumber { get; set; }
+        
         [Display(Name = "Order Date")]
-        public DateTime OrderDate { get; set; }
-        [Required]
+        public DateTime? OrderDate { get; set; }
+  
         [Display(Name = "Due Date")]
-        public DateTime DueDate { get; set; }
-        [Required]
+        public DateTime? DueDate { get; set; }
+  
         [Display(Name = "Client ID")]
         public int ClientID { get; set; }
-        [Required]
+     
         [Display(Name = "Payment Type")]
         public string PaymentInfo { get; set; }
-        [Required]
+  
         [Display(Name = "Comments")]
         public string Comments { get; set; }
-        [Required]
+ 
         [Display(Name = "LT Number")]
-        public int LTNumber { get; set; }
-        [Required]
+        public int? LTNumber { get; set; }
+ 
         [Display(Name = "Sales Agent ID")]
-        public int SalesAgentID { get; set; }
+        public int? SalesAgentID { get; set; }
     }
 }
