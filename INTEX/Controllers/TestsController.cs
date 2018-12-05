@@ -127,16 +127,22 @@ namespace INTEX.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult displayTests(int id)
+        public ActionResult displayTests(int id, int? myworkorderid)
         {
          IEnumerable<displayTests> myTests = db.Database.SqlQuery<displayTests>(
          "Select Test.TestID, Test.TestName, Test.Description, Test.BaseCost, " +
          "Assay_Test.IsRequired, Assay_Test.Conditional " +
          "FROM Test INNER JOIN Assay_Test ON " +
          "Test.TestID = Assay_Test.TestID " +
-         "WHERE AssayID = " + id);
+         "WHERE Assay_Test.AssayID = " + id);
 
             return View(myTests);
+        }
+
+        [HttpPost]
+        public ActionResult displayTests(displayTests item)
+        {
+            return View();
         }
 
     }
