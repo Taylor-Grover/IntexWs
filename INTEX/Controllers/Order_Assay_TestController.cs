@@ -37,7 +37,7 @@ namespace INTEX.Controllers
         }
 
         // GET: Order_Assay_Test/Create
-        public ActionResult Create(int workOrderID, int AssayID, int TestID)
+        public ActionResult Create(int workOrderID, int AssayID, List<int> TestIDs)
         {
             return View();
         }
@@ -47,16 +47,25 @@ namespace INTEX.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "WorkOrderNumber,AssayID,TestID,EmployeeID,IsComplete,TotalCost,ResultID")] Order_Assay_Test order_Assay_Test)
+        public ActionResult Create([Bind(Include = "WorkOrderNumber,AssayID,TestID,EmployeeID,IsComplete,TotalCost,ResultID")] Order_Assay_Test order_Assay_Test, int workOrderID, int AssayID, List<int> TestIDs)
         {
-            if (ModelState.IsValid)
-            {
-                db.Order_Assay_Test.Add(order_Assay_Test);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            List<int> testids = db.Database.SqlQuery<int>("SELECT TestID FROM Assay_Test WHERE Assay_Test.AssayID = " + AssayID).ToList();
 
-            return View(order_Assay_Test);
+            foreach (var item in testids)
+            {
+                Order_Assay_Test record = new Order_Assay_Test();
+                record.WorkOrderNumber = workOrderID;
+                record.AssayID = AssayID;
+                record.TestID = item;
+                db.Order_Assay_Test.Add(record);
+                db.SaveChanges();
+            }
+          
+            return RedirectToAction("Index");
+
+            
+
+            //return View(order_Assay_Test);
         }
 
         // GET: Order_Assay_Test/Edit/5
