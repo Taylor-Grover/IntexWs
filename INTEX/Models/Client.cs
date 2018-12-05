@@ -12,6 +12,7 @@ namespace INTEX.Models
     {
         [Key]
         [Display(Name ="Client ID")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ClientID { get; set; }
 
         [Display(Name = "First Name")]

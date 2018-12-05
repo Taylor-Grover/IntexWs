@@ -37,8 +37,9 @@ namespace INTEX.Controllers
         }
 
         // GET: WorkOrders/Create
-        public ActionResult Create()
+        public ActionResult Create(int ClientID)
         {
+           
             return View();
         }
 
@@ -47,13 +48,17 @@ namespace INTEX.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "WorkOrderNumber,OrderDate,DueDate,ClientID,PaymentInfo,Comments,LTNumber,SalesAgentID")] WorkOrder workOrder)
+        public ActionResult Create([Bind(Include = "WorkOrderNumber,OrderDate,DueDate,ClientID,PaymentInfo,Comments,LTNumber,SalesAgentID")] WorkOrder workOrder, int ClientID)
         {
+            workOrder.ClientID = ClientID;
             if (ModelState.IsValid)
             {
+                
+                workOrder.OrderDate = DateTime.Now;
                 db.WorkOrders.Add(workOrder);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                
+                return RedirectToAction("displayAssays", "Home", new { myWorkOrderID = workOrder.WorkOrderNumber });
             }
 
             return View(workOrder);

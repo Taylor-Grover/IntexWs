@@ -251,6 +251,7 @@
     <Content Include="Views\Assays\Index.cshtml" />
     <Content Include="Views\Tests\displayTests.cshtml" />
     <Content Include="Views\Home\displayAssays.cshtml" />
+    <Content Include="Views\Home\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

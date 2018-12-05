@@ -34,7 +34,9 @@
             </td>
             <td>
                
-              <a href="@Url.Action("displayTests", "Tests", new { id = item.AssayID })">Select Assay</a>
+
+              <a href="@Url.Action("displayTests", "Tests", new { id = item.AssayID, myWorkOrderID = ViewBag.myWorkOrderID })">Select Assay</a>
+
                
             </td>
         </tr>
