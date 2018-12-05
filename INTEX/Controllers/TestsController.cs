@@ -18,6 +18,8 @@ namespace INTEX.Controllers
         // GET: Tests
         public ActionResult Index()
         {
+            
+           
             return View(db.Tests.ToList());
         }
 
@@ -124,5 +126,18 @@ namespace INTEX.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult displayTests(int id)
+        {
+         IEnumerable<displayTests> myTests = db.Database.SqlQuery<displayTests>(
+         "Select Test.TestID, Test.TestName, Test.Description, Test.BaseCost, " +
+         "Assay_Test.IsRequired, Assay_Test.Conditional " +
+         "FROM Test INNER JOIN Assay_Test ON " +
+         "Test.TestID = Assay_Test.TestID " +
+         "WHERE AssayID = " + id);
+
+            return View(myTests);
+        }
+
     }
 }

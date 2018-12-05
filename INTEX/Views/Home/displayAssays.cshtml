@@ -1,0 +1,46 @@
+﻿@model IEnumerable<INTEX.Models.Assay>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AssayDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssayProtocol)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompletionEstimate)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssayDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssayProtocol)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompletionEstimate)
+            </td>
+            <td>
+               
+              <a href="@Url.Action("displayTests", "Tests", new { id = item.AssayID })">See Tests</a>
+               
+            </td>
+        </tr>
+    }
+
+</table>

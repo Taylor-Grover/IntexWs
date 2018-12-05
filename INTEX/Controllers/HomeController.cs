@@ -1,4 +1,5 @@
-﻿using System;
+﻿using INTEX.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,7 @@ namespace INTEX.Controllers
 {
     public class HomeController : Controller
     {
+        private Northwest_LabsContext db = new Northwest_LabsContext();
         public ActionResult Index()
         {
             return View();
@@ -25,6 +27,11 @@ namespace INTEX.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult displayAssays()
+        {
+            return View(db.Assays.ToList());
         }
     }
 }

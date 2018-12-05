@@ -14,10 +14,10 @@ namespace INTEX.Models
         [Required]
         public int AssayID { get; set; }
         [Required]
-        public int AssayDescription { set; get; }
+        public string AssayDescription { set; get; }
         [Required]
-        public int AssayProtocol { get; set; }
+        public string AssayProtocol { get; set; }
         [Required]
-        public int Compensation { get; set; }
+        public string CompletionEstimate { get; set; }
     }
 }
