@@ -1,0 +1,50 @@
+﻿@model IEnumerable<INTEX.Models.Assay>
+
+@{
+    ViewBag.Title = "Summary";
+}
+
+<h2>Summary</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AssayDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssayProtocol)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompletionEstimate)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssayDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssayProtocol)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompletionEstimate)
+            </td>
+            <td>
+            
+
+            </td>
+        </tr>
+    }
+
+</table>
+<p>Would you like to order more Assays???</p>
+
+<a href="@Url.Action("displayAssays", "Home", new { myWorkOrderID = ViewBag.WOID})">YES</a>
+
+<a href="@Url.Action("Confirmation", "Home", new { @*WOID = ViewBag.WOID,*@ CID = ViewBag.CID})">NO</a>

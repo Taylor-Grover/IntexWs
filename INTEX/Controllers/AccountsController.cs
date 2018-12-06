@@ -131,14 +131,41 @@ namespace INTEX.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult displayAccount()
+        public ActionResult displayAccount(/*int WOID,*/ int CID)
         {
-
-
 
             if (login == true)
             {
-                
+                Account myAccount = new Account();
+                foreach(var item in db.Accounts)
+                {
+                    if(item.ClientID == CID)
+                    {
+                        myAccount = item;
+                    }
+                }
+                int numWorkOrders = 0;
+                foreach(var item in db.WorkOrders)
+                {
+                    if(item.ClientID == CID)
+                    {
+                        numWorkOrders++;
+                    }
+                }
+
+
+                ClientAccount clientaccount = new ClientAccount();
+                Client currClient = db.Clients.Find(CID);
+                clientaccount.AccountID = myAccount.AccountID;
+                clientaccount.AccountBalance = myAccount.AccountBalance;
+                clientaccount.ClientAddress = currClient.ClientAddress;
+                clientaccount.ClientEmail = currClient.ClientEmail;
+                clientaccount.ClientFirstName = currClient.ClientFirstName;
+                clientaccount.ClientLastName = currClient.ClientLastName;
+                clientaccount.ClientID = currClient.ClientID;
+                clientaccount.ClientPhone = currClient.ClientPhone;
+                clientaccount.NumberofOrders = numWorkOrders;
+                clientaccount.ClientStartDate = myAccount.ClientStartDate;
                 return View(clientaccount);
             }
             else
@@ -169,9 +196,12 @@ namespace INTEX.Controllers
             if(username != null && password != null)
             {
                 login = true;
-                return RedirectToAction("displayAccount", currClient);
+               
+                return RedirectToAction("displayAccount","Accounts", new { CID = currClient.ClientID });
             }
             else { 
+
+
             return View();
         }
         }
@@ -185,36 +215,25 @@ namespace INTEX.Controllers
         public ActionResult newAccount([Bind(Include = "Username,Password")] ClientAccount clientaccount, Client currClient)
         {
             Random randomNum = new Random();
-            int newAccountID = randomNum.Next(100000, 900000);
+            int newAccountID = randomNum.Next(100000, 999999);
             foreach (var item in db.Accounts)
             {
                 if (item.AccountID == newAccountID)
                 {
-                    newAccountID = randomNum.Next(100000, 900000);
+                    newAccountID = randomNum.Next(100000, 999999);
                 }
             }
 
-            clientaccount.AccountID = newAccountID;
-            clientaccount.AccountBalance = 0;
-            clientaccount.ClientAddress = currClient.ClientAddress;
-            clientaccount.ClientEmail = currClient.ClientEmail;
-            clientaccount.ClientFirstName = currClient.ClientFirstName;
-            clientaccount.ClientLastName = currClient.ClientLastName;
-            clientaccount.ClientID = currClient.ClientID;
-            clientaccount.ClientPhone = currClient.ClientPhone;
-            clientaccount.NumberofOrders = 0;
-            clientaccount.ClientStartDate = DateTime.Today;
-
             Account newAccount = new Account();
-            newAccount.AccountID = clientaccount.AccountID;
-            newAccount.AccountBalance = clientaccount.AccountBalance;
+            newAccount.AccountID = newAccountID;
+            newAccount.AccountBalance = 0;
             newAccount.ClientID = currClient.ClientID;
-            newAccount.ClientStartDate = clientaccount.ClientStartDate;
-            newAccount.NumberofOrders = clientaccount.NumberofOrders;
+            newAccount.ClientStartDate = DateTime.Today;
+            newAccount.NumberofOrders = 0;
             db.Accounts.Add(newAccount);
             db.SaveChanges();
 
-            return View("displayAccount", clientaccount);
+            return RedirectToAction("Login", "Accounts");
         }
 
     }
