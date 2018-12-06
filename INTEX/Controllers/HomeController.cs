@@ -49,7 +49,7 @@ namespace INTEX.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ClientID,ClientFirstName,ClientLastName,ClientAddress,ClientCity,ClientState,ClientZip,ClientEmail,ClientPhone,SpecialCondition")] Client client)
+        public ActionResult Create([Bind(Include = "ClientID,CompanyName,ClientFirstName,ClientLastName,ClientAddress,ClientCity,ClientState,ClientZip,ClientEmail,ClientPhone,SpecialCondition")] Client client)
         {
             if (ModelState.IsValid)
             {
@@ -102,6 +102,21 @@ namespace INTEX.Controllers
          "SELECT A.AssayID, A.AssayDescription, A.AssayProtocol, (SUM(BaseCost)+((SELECT AVG(Lab_Employee.HourlyWage) FROM Lab_Employee)*CompletionEstimate)) AS AssayCost From Assay A INNER JOIN Assay_Test ATe ON A.AssayID = ATe.AssayID INNER JOIN Test T ON ATe.TestID = T.TestID GROUP BY A.AssayID, A.AssayDescription, A.CompletionEstimate, A.AssayProtocol");
 
             return View(myQuotes);
+        }
+
+        public ActionResult Catalog()
+        {
+
+            IEnumerable<Catalog> companyCatalog = db.Database.SqlQuery<Catalog>(
+           "SELECT A.AssayID, AssayDescription, AssayProtocol, CompletionEstimate, IsRequired, Conditional, TestName, BaseCost, P.Description " +
+           "FROM Assay A " +
+           "INNER JOIN Assay_Test ATe ON A.AssayID = ATe.AssayID INNER JOIN Test T ON Ate.TestID = T.TestID INNER JOIN Test_Procedures TP ON T.TestID = TP.TestID " +
+           "INNER JOIN Procedures P ON TP.ProdedureID = P.ProdedureID " +
+           "ORDER BY A.AssayID");
+            return View(companyCatalog);
+
+            return View();
+
         }
 
     }

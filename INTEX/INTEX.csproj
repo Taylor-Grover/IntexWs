@@ -167,6 +167,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\Catalog.cs" />
     <Compile Include="Models\ClientAccount.cs" />
     <Compile Include="Models\displayTests.cs" />
     <Compile Include="Models\Order_Assay_Test.cs" />
@@ -273,6 +274,7 @@
     <Content Include="Views\Home\Summary.cshtml" />
     <Content Include="Views\Home\Confirmation.cshtml" />
     <Content Include="Views\Home\Quote.cshtml" />
+    <Content Include="Views\Home\Catalog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

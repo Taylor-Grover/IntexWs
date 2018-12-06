@@ -1,10 +1,15 @@
-﻿@model INTEX.Models.ClientAccount
+@model INTEX.Models.ClientAccount
 
 @{
     ViewBag.Title = "displayAccount";
 }
 
+
 <h1 class=" w3-center" style="background-color:#607d8b!important">
+
+
+    @Model.CompanyName
+
     @Model.ClientFirstName 
     @Model.ClientLastName <br />
 </h1>
@@ -65,7 +70,9 @@
        <p style="padding-right:50px"><a class="btn btn-lg " style="background-color:#607d8b!important" href="@Url.Action("ClientOrders", "Home", new { CID = Model.ClientID})">Track My Orders</a></p>
     </div>
     <div class="col-xs-4">
+
         <p style="padding-left:50px"><a class="btn btn-lg " style="background-color:#607d8b!important" href="">Get a Quote</a></p>
+
     </div>
     <div class="col-xs-4">
         <a class="btn btn-lg" style="background-color:#607d8b!important" href="@Url.Action("Create", "WorkOrders", new { ClientID = Model.ClientID})">Create a New Order</a>

@@ -35,6 +35,8 @@ namespace INTEX.DAL
         public System.Data.Entity.DbSet<INTEX.Models.ClientAccount> ClientAccounts { get; set; }
 
         public System.Data.Entity.DbSet<INTEX.Models.Quote> Quotes { get; set; }
+
+        public System.Data.Entity.DbSet<INTEX.Models.Catalog> Catalogs { get; set; }
     }
 
   
