@@ -84,7 +84,7 @@ namespace INTEX.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "WorkOrderNumber,OrderDate,DueDate,ClientID,PaymentInfo,Comments,LTNumber,SalesAgentID")] WorkOrder workOrder)
+        public ActionResult Edit([Bind(Include = "WorkOrderNumber,OrderDate,DueDate,ClientID,PaymentInfo,Comments,CompoundName,Complete,LTNumber,SalesAgentID")] WorkOrder workOrder)
         {
             if (ModelState.IsValid)
             {

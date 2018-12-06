@@ -36,6 +36,7 @@ namespace INTEX.Models
         public string ClientAddress { get; set; }
 
         [Display(Name = "Email")]
+
         public string ClientEmail { get; set; }
 
         [Display(Name = "Phone Number")]
