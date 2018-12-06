@@ -6,41 +6,42 @@
 <h2 class="w3-center">My Orders</h2>
 <hr />
 
+<row>
+    @foreach (var item in Model)
+    {
 
-@foreach (var item in Model)
-{
-    <table class="w3-card-4 w3-blue-gray" style="padding:15px">
-        @if (item.ClientID == ViewBag.CID)
+        if (item.ClientID == ViewBag.CID)
         {
-
-            <tr><td style="padding:5px">Order: <b>@item.WorkOrderNumber</b></td></tr>
-            <tr><td style="padding:5px">Order Date: <b>@item.OrderDate</b></td></tr>
-            <tr><td style="padding:5px">Compound Name: <b style="color:darkgreen">@item.CompoundName</b></td></tr>
-            if (item.LTNumber == null)
-            {
-                <tr><td style="padding:15px">Compound is en route to the lab</td></tr>
-                <tr><td style="padding:15px">Estimated time till completion: 10 days</td></tr>
-            }
-            else
-            {
-                if (item.Complete == false || item.Complete == null)
+            <div class="w3-card-4 w3-blue-gray">
+                Order Number: <b>@item.WorkOrderNumber</b>
+                <p style="padding:5px">Order Date: <b>@item.OrderDate</b></p>
+                <p style="padding:5px">Compound Name: <b style="color:darkgreen">@item.CompoundName</b></p>
+                @if (item.LTNumber == null)
                 {
-                    <tr><td style="padding:15px">Compound is being tested</td></tr>
-                    <tr><td style="padding:15px">Estimated time till completion: 5 days</td></tr>
+                <p style="padding:15px">Compound is en route to the lab</p>
+                <p style="padding:15px">Estimated time till completion: 10 days</p>
                 }
                 else
                 {
-                    <tr><td style="padding:15px; text-decoration-line:overline, underline">Tests are complete, reports are being compiled and sent to you.</td></tr>
-                    <tr><td style="padding:15px">Estimated time till completion: <b style="text-shadow: 2px 2px darkgreen">Complete</b></td></tr>
+                if (item.Complete == false || item.Complete == null)
+                {
+                <p style="padding:15px">Compound is being tested</p>
+                <p style="padding:15px">Estimated time till completion: 5 days</p>
                 }
-            }
+                else
+                {
+                <p style="padding:15px; text-decoration-line:overline, underline">Tests are complete, reports are being compiled and sent to you.</p>
+                <p style="padding:15px">Estimated time till completion: <b style="text-shadow: 2px 2px darkgreen">Complete</b></p>
+                }
+                }
+        </div>
+    }
 
-        }
-    </table>
 
-   
+
 }
+    </row>
 
-<br />
+    <br />
     <a class="btn btn-md btn-info" href="@Url.Action("DisplayAccount", "Accounts", new { CID = ViewBag.CID})">&laquo; My Account</a>
 

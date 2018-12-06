@@ -4,47 +4,43 @@
     ViewBag.Title = "Summary";
 }
 
-<h2>Summary</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.AssayDescription)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AssayProtocol)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CompletionEstimate)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<h2 class="w3-center">Order Summary</h2>
+<div class="w3-card-4 w3-blue-gray" style="padding:20px">
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.AssayDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AssayProtocol)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CompletionEstimate)
-            </td>
-            <td>
-            
-
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.AssayDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssayProtocol)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompletionEstimate) <span style="font-size:10px">(*days)</span>
+            </th>
+            <th></th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AssayDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AssayProtocol)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompletionEstimate)
+                </td>
+                <td></td>
+            </tr>
+        }
+
+    </table>
+</div>
+<br />
 <p>Would you like to order more Assays???</p>
 
-<a href="@Url.Action("displayAssays", "Home", new { myWorkOrderID = ViewBag.WOID})">YES</a>
+<a class="btn btn-sm btn-success" href="@Url.Action("displayAssays", "Home", new { myWorkOrderID = ViewBag.WOID})">YES</a>
 
-<a href="@Url.Action("Confirmation", "Home", new { @*WOID = ViewBag.WOID,*@ CID = ViewBag.CID})">NO</a>
+<a class="btn btn-sm btn-danger" href="@Url.Action("Confirmation", "Home", new { @*WOID = ViewBag.WOID,*@ CID = ViewBag.CID})">NO</a>

@@ -4,76 +4,79 @@
     ViewBag.Title = "displayTests";
 }
 
-<h2>displayTests</h2>
+<h2 class="w3-center">Tests Included in Assay</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TestName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BaseCost)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-        </th>
-        <th>
-        </th>
-        <th></th>
-    </tr>
-            @foreach (var item in Model)
-            {
 
-                if (item.Conditional == true)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.TestName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.BaseCost)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Description)
-                        </td>
-                        <td>
-                            <p>This test will only run if specific trigger conditions are met. If the test is run, you will be charged additional costs. Do you want to run this test regardless of the triggers?</p>
-                            @Html.DropDownList("Response",
-    new SelectList(
-        new[]
+<div class="w3-card-4 w3-blue-gray">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TestName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BaseCost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+            </th>
+            <th>
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
         {
-                                    new { Value = "true", Text = "Yes" },
-                                    new { Value = "false", Text = "No"},
-                               },
-                               "Value",
-                               "Text"))
-                        </td>
-                    </tr>
-                }
-                else
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.TestName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.BaseCost)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Description)
-                        </td>
-                        <td></td>
-                    </tr>
-                }
-            }
-</table>
 
+            if (item.Conditional == true)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TestName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BaseCost)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        <p>This test will only run if specific trigger conditions are met. If the test is run, you will be charged additional costs. Do you want to run this test regardless of the triggers?</p>
+                        @Html.DropDownList("Response",
+new SelectList(
+new[]
+{
+                        new { Value = "true", Text = "Yes" },
+                        new { Value = "false", Text = "No"},
+                 },
+                 "Value",
+                 "Text"))
+                        <br />
+                    </td>
+                    
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TestName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BaseCost)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td></td>
+
+                </tr>
+            }
+           
+        }
+    </table>
+</div>
 <br />
 
-<button class="w3-button w3-xlarge btn-primary" onclick="location.href='@Url.Action("Create", "Order_Assay_Test", new { workOrderID = ViewBag.workorderid, AssayID = ViewBag.AssayID})'">Add Assay</button>
+<button class="btn btn-lg btn-success" onclick="location.href='@Url.Action("Create", "Order_Assay_Test", new { workOrderID = ViewBag.workorderid, AssayID = ViewBag.AssayID})'">Add Assay</button>
 
