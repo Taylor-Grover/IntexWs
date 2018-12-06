@@ -15,7 +15,7 @@
 
             <tr><td style="padding:5px">Order: <b>@item.WorkOrderNumber</b></td></tr>
             <tr><td style="padding:5px">Order Date: <b>@item.OrderDate</b></td></tr>
-            <tr><td style="padding:5px">Compound Name: <b>@item.CompoundName</b></td></tr>
+            <tr><td style="padding:5px">Compound Name: <b style="color:darkgreen">@item.CompoundName</b></td></tr>
             if (item.LTNumber == null)
             {
                 <tr><td style="padding:15px">Compound is en route to the lab</td></tr>
@@ -31,13 +31,16 @@
                 else
                 {
                     <tr><td style="padding:15px; text-decoration-line:overline, underline">Tests are complete, reports are being compiled and sent to you.</td></tr>
-                    <tr><td style="padding:15px">Estimated time till completion: <b style="text-shadow: 2px 2px green">Complete</b></td></tr>
+                    <tr><td style="padding:15px">Estimated time till completion: <b style="text-shadow: 2px 2px darkgreen">Complete</b></td></tr>
                 }
             }
 
         }
     </table>
 
+   
 }
 
+<br />
+    <a class="btn btn-md btn-info" href="@Url.Action("DisplayAccount", "Accounts", new { CID = ViewBag.CID})">&laquo; My Account</a>
 

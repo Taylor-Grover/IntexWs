@@ -18,7 +18,7 @@
             <p class="w3-center" style="font-size:45px"><h3>Current Client</h3></p>
                 </div> 
             <div class="col-md-6" style="padding-top:10px">
-            <a href="https://asp.net" class="btn btn-primary btn-lg">Access Your Account &raquo;</a>
+            <a href="@Url.Action("Login", "Accounts")" class="btn btn-primary btn-lg">Access Your Account &raquo;</a>
             </div>
         </div>
         </div>
@@ -31,7 +31,7 @@
                 <p>
                     Receive a discount on your first order and return the favor to whomever reffered you!
                 </p>
-                <p><a class="btn btn-primary btn-lg" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+                <p><a class="btn btn-primary btn-lg" href="@Url.Action("Login", "Accounts")">Learn more &raquo;</a></p>
                 <br />
             </div>
         </div>
@@ -39,7 +39,7 @@
             <div class="w3-card-4 w3-light-gray w3-center" style="padding:6px">
                 <h2>Get a Quote</h2>
                 <p>With thorough and detailed assay testing procedures, we guarantee a hassle-free research process for your compound.</p>
-                <p><a class="btn btn-primary btn-lg" href="https://go.microsoft.com/fwlink/?LinkId=301866">Quote &raquo;</a></p>
+                <p><a class="btn btn-primary btn-lg" href="@Url.Action("Login", "Accounts")">Quote &raquo;</a></p>
                 <br />
             </div>
 
@@ -48,7 +48,7 @@
             <div class="w3-card-4 w3-light-gray w3-center" style="padding:6px">
                 <h2>Need an Account?</h2>
                 <p>A NorthWest Labs account allows order tracking, order quotes, and order placement</p>
-                <p><a class="btn btn-primary btn-lg" href="https://go.microsoft.com/fwlink/?LinkId=301867">Create Account &raquo;</a></p>
+                <p><a class="btn btn-primary btn-lg" href="@Url.Action("Create", "Home")">Create Account &raquo;</a></p>
 
             </div>
         </div>
