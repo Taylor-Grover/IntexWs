@@ -6,6 +6,7 @@ using System.Web;
 
 namespace INTEX.Models
 {
+    //This model allows the system to build a new client account
     public class ClientAccount
     {
         [Key]
@@ -39,8 +40,10 @@ namespace INTEX.Models
         public string ClientAddress { get; set; }
 
         [Display(Name = "Email")]
+
         [StringLength(50, ErrorMessage = "Too long!")]
         [RegularExpression(@"^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$", ErrorMessage = "Please Enter a Valid Email Address")]
+
         public string ClientEmail { get; set; }
 
         [Display(Name = "Phone Number")]

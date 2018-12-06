@@ -36,6 +36,7 @@ namespace INTEX.Controllers
             return View(order_Assay_Test);
         }
 
+        // This method receives two parameters: the workordernumber and the assayid. This allows the system to know which assay the user selects in the create order process and displays all the tests connected to that assay
         // GET: Order_Assay_Test/Create
         public ActionResult Create(int workOrderID, int AssayID)
         {
@@ -49,6 +50,7 @@ namespace INTEX.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "WorkOrderNumber,AssayID,TestID,EmployeeID,IsComplete,TotalCost,ResultID")] Order_Assay_Test order_Assay_Test, int workOrderID, int AssayID)
         {
+            //This gives us all the tests that go with an assay
             List<int> testids = db.Database.SqlQuery<int>("SELECT TestID FROM Assay_Test WHERE Assay_Test.AssayID = " + AssayID).ToList();
 
             foreach (var item in testids)
@@ -69,6 +71,7 @@ namespace INTEX.Controllers
                 }
             }
             Client myClient = db.Clients.Find(CID);
+            //passes the work order number, clientid, and assayid to the summary view in the home controller
             return RedirectToAction("Summary", "Home", new { WOID = workOrderID, CID = myClient.ClientID, AID = AssayID });
            
 

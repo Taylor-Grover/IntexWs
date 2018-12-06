@@ -13,9 +13,11 @@ namespace INTEX.Controllers
 {
     public class AccountsController : Controller
     {
+        //This attribute allows for a login feature.
         private static bool login = false;
         private Northwest_LabsContext db = new Northwest_LabsContext();
 
+        //This action method allows a user to see their account
         // GET: Accounts
         public ActionResult Index()
         {
@@ -23,6 +25,7 @@ namespace INTEX.Controllers
             return View(db.Accounts.ToList());
         }
 
+        //This is not utilized in the program
         // GET: Accounts/Details/5
         public ActionResult Details(int? id)
         {
@@ -38,6 +41,7 @@ namespace INTEX.Controllers
             return View(account);
         }
 
+        //This action method allows a client to create an account
         // GET: Accounts/Create
         public ActionResult Create()
         {
@@ -131,6 +135,8 @@ namespace INTEX.Controllers
             base.Dispose(disposing);
         }
 
+
+        //This is an important action method that allows the clients to see their account page. Before it can be accessed, the users must login
         public ActionResult displayAccount(/*int WOID,*/ int CID)
         {
 
@@ -153,7 +159,7 @@ namespace INTEX.Controllers
                     }
                 }
 
-
+                //This updates an instance of the ClientAccount model with whichever client has logged in.
                 ClientAccount clientaccount = new ClientAccount();
                 Client currClient = db.Clients.Find(CID);
                 clientaccount.AccountID = myAccount.AccountID;
@@ -175,6 +181,7 @@ namespace INTEX.Controllers
                 return RedirectToAction("Login");
             }
         }
+
         [HttpGet]
         public ActionResult Login()
         {
@@ -219,6 +226,8 @@ namespace INTEX.Controllers
         {
             return View();
         }
+
+        //This allows the client to create a new account.
         [HttpPost]
         public ActionResult newAccount([Bind(Include = "Username,Password")] ClientAccount clientaccount, Client currClient)
         {

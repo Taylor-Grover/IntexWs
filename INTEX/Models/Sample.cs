@@ -7,6 +7,7 @@ using System.Web;
 
 namespace INTEX.Models
 {
+    //This model is linked to the Sample table in the Database
     [Table("Sample")]
     public class Sample
     {

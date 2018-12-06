@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using INTEX.DAL;
 using INTEX.Models;
 
+//This controller allows the user to work with client information without having to do it through the database
 namespace INTEX.Controllers
 {
     public class ClientsController : Controller

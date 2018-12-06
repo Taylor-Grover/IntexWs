@@ -15,6 +15,7 @@ namespace INTEX.Controllers
     {
         private Northwest_LabsContext db = new Northwest_LabsContext();
 
+        //See all tests in the database
         // GET: Tests
         public ActionResult Index()
         {
@@ -23,6 +24,7 @@ namespace INTEX.Controllers
             return View(db.Tests.ToList());
         }
 
+        //see the details of a test in the database
         // GET: Tests/Details/5
         public ActionResult Details(int? id)
         {
@@ -44,6 +46,7 @@ namespace INTEX.Controllers
             return View();
         }
 
+        //Add a new test to the database
         // POST: Tests/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -61,6 +64,7 @@ namespace INTEX.Controllers
             return View(test);
         }
 
+        //edit the tests in the database
         // GET: Tests/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -92,6 +96,7 @@ namespace INTEX.Controllers
             return View(test);
         }
 
+        //delete tests from the database
         // GET: Tests/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -128,10 +133,13 @@ namespace INTEX.Controllers
         }
 
 
+        //Show all of the tests linked to a specific assay. This will be loaded after a user selects an assay in the process of building a new work order
         public ActionResult displayTests(int id, int? myWorkOrderID)
         {
             ViewBag.workorderid = myWorkOrderID;
             ViewBag.AssayID = id;
+
+            //this query takes an assay id (passed from the previous view) and finds all tests connected to it.
          IEnumerable<displayTests> myTests = db.Database.SqlQuery<displayTests>(
          "Select Test.TestID, Test.TestName, Test.Description, Test.BaseCost, " +
          "Assay_Test.IsRequired, Assay_Test.Conditional " +
@@ -139,6 +147,7 @@ namespace INTEX.Controllers
          "Test.TestID = Assay_Test.TestID " +
          "WHERE Assay_Test.AssayID = " + id);
 
+            //This gives us a list of test ids related to the assay. This is passed to the view with the viewbag.
             List<int> listtest = new List<int>();
             foreach(var item in myTests)
             {

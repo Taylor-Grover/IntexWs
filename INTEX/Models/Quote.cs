@@ -7,6 +7,7 @@ using System.Web;
 
 namespace INTEX.Models
 {
+    //This model allows the system to create a quote
     public class Quote
     {
         [Key]

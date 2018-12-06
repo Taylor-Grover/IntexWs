@@ -7,6 +7,7 @@ using System.Web;
 
 namespace INTEX.Models
 {
+    //This model is linked to the WorkOrder table in the Database
     [Table("WorkOrder")]
     public class WorkOrder
     {
