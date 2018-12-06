@@ -21,6 +21,6 @@ namespace INTEX.Models
         public string CompletionEstimate { get; set; }
 
         
-        public virtual List<Test> myTests { get; set; }
+       
     }
 }

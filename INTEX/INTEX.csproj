@@ -266,6 +266,8 @@
     <Content Include="Views\Accounts\Login.cshtml" />
     <Content Include="Views\Accounts\newAccount.cshtml" />
     <Content Include="Views\Accounts\displayAccount.cshtml" />
+    <Content Include="Views\Home\Summary.cshtml" />
+    <Content Include="Views\Home\Confirmation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

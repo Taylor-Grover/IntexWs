@@ -12,6 +12,7 @@ namespace INTEX.Controllers
     public class HomeController : Controller
     {
         private Northwest_LabsContext db = new Northwest_LabsContext();
+
         public ActionResult Index()
         {
             return View();
@@ -63,13 +64,32 @@ namespace INTEX.Controllers
             return View(client);
         }
 
-        public ActionResult ClientOrders(int? CID)
+        public ActionResult ClientOrders(int CID)
         {
-            ViewBag.CID = 44;
+            ViewBag.CID = CID;
             return View(db.WorkOrders.ToList());
         }
 
+        public ActionResult Summary(int WOID, int CID, int AID)
+        {
+            IEnumerable<Assay> myAssays = db.Database.SqlQuery<Assay>(
+               "SELECT Assay.AssayID, AssayDescription, AssayProtocol, CompletionEstimate " +
+               "FROM Assay INNER JOIN Order_Assay_Test ON Assay.AssayID = Order_Assay_Test.AssayID " +
+               "WHERE Order_Assay_Test.WorkOrderNumber = " + WOID + " AND " +
+               "Order_Assay_Test.AssayID = " + AID
+                );
+            ViewBag.WOID = WOID;
+            ViewBag.CID = CID;
 
+            return View(myAssays);
+        }
+
+        public ActionResult Confirmation(/*int WOID,*/ int CID)
+        {
+            //ViewBag.WOID = WOID;
+            ViewBag.CID = CID;
+            return View();
+        }
 
     }
 }

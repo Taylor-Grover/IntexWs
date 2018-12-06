@@ -1,0 +1,10 @@
+﻿
+@{
+    ViewBag.Title = "Confirmation";
+}
+
+<h2>Confirmation</h2>
+
+<p>THANKS FOR YOUR ORDER!</p>
+<br />
+<a href="@Url.Action("displayAccount", "Accounts", new { @*WOID = ViewBag.WOID,*@ CID = ViewBag.CID})">FINISH</a>
