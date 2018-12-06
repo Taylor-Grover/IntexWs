@@ -5,6 +5,7 @@
 }
 
 <h2 class=" w3-center" style="background-color:#607d8b!important">
+    @Model.CompanyName
     @Model.ClientFirstName 
     @Model.ClientLastName <br />
 </h2>
@@ -65,7 +66,7 @@
         <a class="btn btn-lg " style="background-color:#607d8b!important" href="@Url.Action("ClientOrders", "Home", new { CID = Model.ClientID})">Track My Orders</a>
     </div>
     <div class="col-xs-4">
-        <a class="btn btn-lg " style="background-color:#607d8b!important" href="">Get a Quote</a>
+        <a class="btn btn-lg " style="background-color:#607d8b!important" href="@Url.Action("Quote", "Home")">Get a Quote</a>
     </div>
     <div class="col-xs-4">
         <a class="btn btn-lg" style="background-color:#607d8b!important" href="@Url.Action("Create", "WorkOrders", new { ClientID = Model.ClientID})">Create a New Order</a>

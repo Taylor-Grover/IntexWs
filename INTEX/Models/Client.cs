@@ -15,6 +15,10 @@ namespace INTEX.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ClientID { get; set; }
 
+        [Display(Name = "Company Name")]
+        [Required(ErrorMessage = "Please enter a company name")]
+        public string CompanyName { get; set; }
+
         [Display(Name = "First Name")]
         [Required(ErrorMessage = "Please enter a first name")]
         public string ClientFirstName { get; set; }
