@@ -49,7 +49,7 @@ namespace INTEX.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ClientID,ClientFirstName,ClientLastName,ClientAddress,ClientEmail,ClientPhone,SpecialCondition")] Client client)
+        public ActionResult Create([Bind(Include = "ClientID,ClientFirstName,ClientLastName,ClientAddress,ClientCity,ClientState,ClientZip,ClientEmail,ClientPhone,SpecialCondition")] Client client)
         {
             if (ModelState.IsValid)
             {
@@ -73,7 +73,7 @@ namespace INTEX.Controllers
         public ActionResult Summary(int WOID, int CID, int AID)
         {
             IEnumerable<Assay> myAssays = db.Database.SqlQuery<Assay>(
-               "SELECT Assay.AssayID, AssayDescription, AssayProtocol, CompletionEstimate " +
+               "SELECT DISTINCT Assay.AssayID, AssayDescription, AssayProtocol, CompletionEstimate " +
                "FROM Assay INNER JOIN Order_Assay_Test ON Assay.AssayID = Order_Assay_Test.AssayID " +
                "WHERE Order_Assay_Test.WorkOrderNumber = " + WOID + " AND " +
                "Order_Assay_Test.AssayID = " + AID
