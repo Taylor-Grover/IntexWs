@@ -17,8 +17,7 @@ namespace INTEX.Models
 
         [RegularExpression(@"^\d+$", ErrorMessage = "Number of Orders should be an integer")]
         public int NumberofOrders { get; set; }
-
-        [RegularExpression(@"^\d{1,2}\/\d{1,2}\/\d{4}$", ErrorMessage = "Date should be mm/dd/yyyy")]
+        
         public DateTime ClientStartDate { get; set; }
 
         public int ClientID { get; set; }
@@ -43,7 +42,6 @@ namespace INTEX.Models
 
         [StringLength(50, ErrorMessage = "Too long!")]
         [RegularExpression(@"^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$", ErrorMessage = "Please Enter a Valid Email Address")]
-
         public string ClientEmail { get; set; }
 
         [Display(Name = "Phone Number")]

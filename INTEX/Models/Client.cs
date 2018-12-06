@@ -39,7 +39,7 @@ namespace INTEX.Models
         [Display(Name = "City")]
         [Required(ErrorMessage = "Please enter a city")]
         [StringLength(50, ErrorMessage = "Too long!")]
-        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "City should only have letters")]
+        [RegularExpression(@"^[a-zA-Z]+( [a-zA-z]+)?$", ErrorMessage = "City should only have letters")]
         public string ClientCity { get; set; }
 
         [Display(Name = "State")]
