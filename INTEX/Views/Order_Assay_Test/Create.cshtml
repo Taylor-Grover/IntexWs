@@ -6,7 +6,8 @@
 
 <h2></h2>
 <div class="w3-card-4 w3-blue-gray" style="padding:15px">
-
+    <p>The Assay has been added to your order. </p>
+    <p>Click to Continue</p>
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
@@ -75,7 +76,7 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Continue Order" class="btn btn-success" />
+                    <input type="submit" value="Continue" class="btn btn-success" />
                 </div>
             </div>
         </div>

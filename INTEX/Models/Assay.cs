@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -12,12 +13,16 @@ namespace INTEX.Models
     {
         [Key]
         [Required]
+        
         public int AssayID { get; set; }
         [Required]
+        [DisplayName("Assay Description")]
         public string AssayDescription { set; get; }
         [Required]
+        [DisplayName("Assay Protocol")]
         public string AssayProtocol { get; set; }
         [Required]
+        [DisplayName("Completion Estimate")]
         public int CompletionEstimate { get; set; }
 
       

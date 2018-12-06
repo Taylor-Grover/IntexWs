@@ -4,39 +4,46 @@
     ViewBag.Title = "Quote";
 }
 
-<h2>Quote</h2>
+<h2 class="w3-center">Assay Quote Prices</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.AssayDescription)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AssayProtocol)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AssayCost)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.AssayDescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AssayProtocol)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AssayCost)
-        </td>
-        <td>
-        </td>
-    </tr>
-}
+<div class="w3-card-4 w3-blue-gray" style="padding: 10px">
+    <br />
+    <table class="table">
+        
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AssayDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssayProtocol)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssayCost)
+            </th>
+            <th></th>
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AssayDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AssayProtocol)
+                </td>
+                <td style="text">
+                    $@Html.DisplayFor(modelItem => item.AssayCost)
+                </td>
+                <td></td>
+            </tr>
+        }
+
+    </table>
+    <br />
+    <br />
+    <p class="w3-center">*Current Prices include base test cost, employee wage, and material cost.<br />
+        Since wage and material cost are conditional aspects of the research process,<br /> these prices may rise or fall dependent on these variables*
+    </p>
+</div>
