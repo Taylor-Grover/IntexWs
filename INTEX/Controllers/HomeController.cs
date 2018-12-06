@@ -106,7 +106,17 @@ namespace INTEX.Controllers
 
         public ActionResult Catalog()
         {
+
+            IEnumerable<Catalog> companyCatalog = db.Database.SqlQuery<Catalog>(
+           "SELECT A.AssayID, AssayDescription, AssayProtocol, CompletionEstimate, IsRequired, Conditional, TestName, BaseCost, P.Description " +
+           "FROM Assay A " +
+           "INNER JOIN Assay_Test ATe ON A.AssayID = ATe.AssayID INNER JOIN Test T ON Ate.TestID = T.TestID INNER JOIN Test_Procedures TP ON T.TestID = TP.TestID " +
+           "INNER JOIN Procedures P ON TP.ProdedureID = P.ProdedureID " +
+           "ORDER BY A.AssayID");
+            return View(companyCatalog);
+
             return View();
+
         }
 
     }
