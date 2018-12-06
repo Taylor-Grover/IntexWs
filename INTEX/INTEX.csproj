@@ -170,6 +170,7 @@
     <Compile Include="Models\ClientAccount.cs" />
     <Compile Include="Models\displayTests.cs" />
     <Compile Include="Models\Order_Assay_Test.cs" />
+    <Compile Include="Models\Quote.cs" />
     <Compile Include="Models\Test.cs" />
     <Compile Include="Models\Assay.cs" />
     <Compile Include="Models\testid.cs" />
@@ -268,6 +269,7 @@
     <Content Include="Views\Accounts\displayAccount.cshtml" />
     <Content Include="Views\Home\Summary.cshtml" />
     <Content Include="Views\Home\Confirmation.cshtml" />
+    <Content Include="Views\Home\Quote.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

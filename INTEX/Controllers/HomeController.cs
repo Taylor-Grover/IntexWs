@@ -96,5 +96,13 @@ namespace INTEX.Controllers
             return View();
         }
 
+        public ActionResult Quote()
+        {
+          IEnumerable<Quote> myQuotes = db.Database.SqlQuery<Quote>(
+         "SELECT A.AssayID, A.AssayDescription, A.AssayProtocol, (SUM(BaseCost)+((SELECT AVG(Lab_Employee.HourlyWage) FROM Lab_Employee)*CompletionEstimate)) AS AssayCost From Assay A INNER JOIN Assay_Test ATe ON A.AssayID = ATe.AssayID INNER JOIN Test T ON ATe.TestID = T.TestID GROUP BY A.AssayID, A.AssayDescription, A.CompletionEstimate, A.AssayProtocol");
+
+            return View(myQuotes);
+        }
+
     }
 }
