@@ -12,7 +12,14 @@
     @Model.NumberofOrders<br />
 </h2>
 
-
-<a href="@Url.Action("ClientOrders", "Home", new { CID = Model.ClientID})">Track My Orders</a>
-<a href="">Quote</a>
-<a href="@Url.Action("Create", "WorkOrders", new { ClientID = Model.ClientID})">Create a New Order</a>
+<row class="row">
+    <div class="col-md-4">
+        <a class="btn btn-lg btn-primary" href="@Url.Action("ClientOrders", "Home", new { CID = Model.ClientID})">Track My Orders</a>
+    </div>
+    <div class="col-md-4">
+        <a class="btn btn-lg btn-primary" href="">Get a Quote</a>
+    </div>
+    <div class="col-md-4">
+        <a class="btn btn-lg btn-primary" href="@Url.Action("Create", "WorkOrders", new { ClientID = Model.ClientID})">Create a New Order</a>
+    </div>
+</row>
