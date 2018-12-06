@@ -1,0 +1,70 @@
+﻿@model IEnumerable<INTEX.Models.Catalog>
+
+@{
+    ViewBag.Title = "Catalog";
+}
+
+<h2>Catalog</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AssayDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssayProtocol)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompletionEstimate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsRequired)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Conditional)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TestName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BaseCost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+    </tr>
+
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssayDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssayProtocol)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompletionEstimate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsRequired)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Conditional)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TestName)
+        </td>
+        <td>
+            $@Html.DisplayFor(modelItem => item.BaseCost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+    </tr>
+}
+
+</table>
