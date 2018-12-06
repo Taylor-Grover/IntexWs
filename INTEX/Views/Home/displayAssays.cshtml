@@ -4,9 +4,9 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2 class="w3-center">All Available Assays</h2>
 
-<table class="table">
+<table class="table-responsive w3-blue-gray">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.AssayDescription)
@@ -35,11 +35,12 @@
             <td>
                
 
-              <a href="@Url.Action("displayTests", "Tests", new { id = item.AssayID, myWorkOrderID = ViewBag.myWorkOrderID })">Select Assay</a>
+              <a class="btn btn-md btn-success" href="@Url.Action("displayTests", "Tests", new { id = item.AssayID, myWorkOrderID = ViewBag.myWorkOrderID })">Select Assay</a>
 
                
             </td>
         </tr>
+        
     }
 
 </table>
