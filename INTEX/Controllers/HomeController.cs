@@ -14,6 +14,7 @@ namespace INTEX.Controllers
         private static bool login = false;
         private Northwest_LabsContext db = new Northwest_LabsContext();
         private static List<Assay> misAssays = new List<Assay>();
+
         public ActionResult Index()
         {
             return View();
@@ -54,7 +55,6 @@ namespace INTEX.Controllers
         {
             if (ModelState.IsValid)
             {
-               
                 db.Clients.Add(client);
                 db.SaveChanges();
 
@@ -72,7 +72,6 @@ namespace INTEX.Controllers
 
         public ActionResult Summary(int WOID, int CID, int AID)
         {
-           
             IEnumerable<Assay> myAssays = db.Database.SqlQuery<Assay>(
                "SELECT DISTINCT Assay.AssayID, AssayDescription, AssayProtocol, CompletionEstimate " +
                "FROM Assay INNER JOIN Order_Assay_Test ON Assay.AssayID = Order_Assay_Test.AssayID " +
@@ -94,13 +93,14 @@ namespace INTEX.Controllers
             misAssays.Clear();
 
             ViewBag.CID = CID;
+            misAssays.Clear();
             return View();
         }
 
         public ActionResult Quote()
         {
           IEnumerable<Quote> myQuotes = db.Database.SqlQuery<Quote>(
-         "SELECT A.AssayID, A.AssayDescription, A.AssayProtocol, (SUM(BaseCost)+((SELECT AVG(Lab_Employee.HourlyWage) FROM Lab_Employee)*CompletionEstimate)) AS AssayCost From Assay A INNER JOIN Assay_Test ATe ON A.AssayID = ATe.AssayID INNER JOIN Test T ON ATe.TestID = T.TestID GROUP BY A.AssayID, A.AssayDescription, A.CompletionEstimate, A.AssayProtocol");
+         "SELECT Query1.AssayID, Query1.AssayDescription, Query1.AssayProtocol, (Cost1 + TotCost) AS AssayCost FROM (SELECT A.AssayID, A.AssayDescription, A.AssayProtocol, (SUM(BaseCost)+((SELECT AVG(Lab_Employee.HourlyWage) FROM Lab_Employee)*CompletionEstimate)) AS Cost1 From Assay A INNER JOIN Assay_Test ATe ON A.AssayID = ATe.AssayID INNER JOIN Test T ON ATe.TestID = T.TestID GROUP BY A.AssayID, A.AssayDescription, A.CompletionEstimate, A.AssayProtocol) AS Query1, (SELECT AssayID, SUM(TM.MatAmount*Cost) AS TotCost FROM Material M INNER JOIN Test_Material TM ON M.MaterialID = TM.MaterialID INNER JOIN Test T ON TM.TestID = T.TestID INNER JOIN Assay_Test Ate ON T.TestID = Ate.TestID GROUP BY Ate.AssayID) AS Query2 WHERE Query1.AssayID = Query2.AssayID");
 
             return View(myQuotes);
         }
@@ -197,6 +197,7 @@ namespace INTEX.Controllers
 
                 return View();
             }
+
         }
 
     }

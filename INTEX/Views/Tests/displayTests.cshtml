@@ -35,7 +35,7 @@
                         @Html.DisplayFor(modelItem => item.TestName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.BaseCost)
+                        $@Html.DisplayFor(modelItem => item.BaseCost)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Description)
@@ -47,6 +47,7 @@
 new SelectList(
 new[]
 {
+
         new { Value = "true", Text = "Yes" },
         new { Value = "false", Text = "No"},
 },
@@ -65,7 +66,7 @@ new[]
                         @Html.DisplayFor(modelItem => item.TestName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.BaseCost)
+                        $@Html.DisplayFor(modelItem => item.BaseCost)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Description)
