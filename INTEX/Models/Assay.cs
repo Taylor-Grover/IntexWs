@@ -8,6 +8,7 @@ using System.Web;
 
 namespace INTEX.Models
 {
+    //This model is linked to the Assay table in the Database
     [Table("Assay")]
     public class Assay
     {

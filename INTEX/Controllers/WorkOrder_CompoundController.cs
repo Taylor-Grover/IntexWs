@@ -15,12 +15,14 @@ namespace INTEX.Controllers
     {
         private Northwest_LabsContext db = new Northwest_LabsContext();
 
+        //see all work order compounds
         // GET: WorkOrder_Compound
         public ActionResult Index()
         {
             return View(db.WorkOrder_Compound.ToList());
         }
 
+        //see the instance details of a work order compound
         // GET: WorkOrder_Compound/Details/5
         public ActionResult Details(int? id)
         {
@@ -36,6 +38,7 @@ namespace INTEX.Controllers
             return View(workOrder_Compound);
         }
 
+        //create a new work order compound
         // GET: WorkOrder_Compound/Create
         public ActionResult Create()
         {
@@ -59,6 +62,7 @@ namespace INTEX.Controllers
             return View(workOrder_Compound);
         }
 
+        //Edit the work order compound
         // GET: WorkOrder_Compound/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -90,6 +94,7 @@ namespace INTEX.Controllers
             return View(workOrder_Compound);
         }
 
+        //delete the work order compound
         // GET: WorkOrder_Compound/Delete/5
         public ActionResult Delete(int? id)
         {

@@ -15,12 +15,14 @@ namespace INTEX.Controllers
     {
         private Northwest_LabsContext db = new Northwest_LabsContext();
 
+        //See all samples in the database
         // GET: Samples
         public ActionResult Index()
         {
             return View(db.Samples.ToList());
         }
 
+        //see details of an individual sample in the database
         // GET: Samples/Details/5
         public ActionResult Details(int? id)
         {
@@ -35,7 +37,8 @@ namespace INTEX.Controllers
             }
             return View(sample);
         }
-
+        
+        //Add a new sample to the database
         // GET: Samples/Create
         public ActionResult Create()
         {
@@ -59,6 +62,7 @@ namespace INTEX.Controllers
             return View(sample);
         }
 
+        //Edit samples in the database
         // GET: Samples/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -90,6 +94,7 @@ namespace INTEX.Controllers
             return View(sample);
         }
 
+        //remove samples from the database
         // GET: Samples/Delete/5
         public ActionResult Delete(int? id)
         {

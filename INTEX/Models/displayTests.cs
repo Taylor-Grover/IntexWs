@@ -6,6 +6,7 @@ using System.Web;
 
 namespace INTEX.Models
 {
+    //This model allows the system to get the needed information to display all the assays
     public class displayTests
     {
         [Key]

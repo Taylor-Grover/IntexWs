@@ -7,6 +7,7 @@ using System.Web;
 
 namespace INTEX.Models
 {
+    //This model is linked to the Client table in the Database
     [Table("Client")]
     public class Client
     {
