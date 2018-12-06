@@ -3,13 +3,14 @@
 }
 <div class="white">
     <h2 class="w3-center">Login to Your Portal</h2>
-    <br />
+    
     
     <div class="w3-card-4 w3-blue-gray" style="padding:15px">
         @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
         <div class="row">
+            <br />
             <div class="col-sm-2">
                 @Html.Label("Email:")
             </div>
