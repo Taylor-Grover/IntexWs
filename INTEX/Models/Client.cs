@@ -19,11 +19,11 @@ namespace INTEX.Models
         [Required(ErrorMessage = "Please enter a company name")]
         public string CompanyName { get; set; }
 
-        [Display(Name = "First Name")]
+        [Display(Name = "Company Representative First Name")]
         [Required(ErrorMessage = "Please enter a first name")]
         public string ClientFirstName { get; set; }
 
-        [Display(Name = "Last Name")]
+        [Display(Name = "Company Representative Last Name")]
         [Required(ErrorMessage = "Please enter a last name")]
         public string ClientLastName { get; set; }
 
