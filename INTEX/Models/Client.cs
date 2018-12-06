@@ -27,6 +27,18 @@ namespace INTEX.Models
         [Required(ErrorMessage = "Please enter an address")]
         public string ClientAddress { get; set; }
 
+        [Display(Name = "City")]
+        [Required(ErrorMessage = "Please enter a city")]
+        public string ClientCity { get; set; }
+
+        [Display(Name = "State")]
+        [Required(ErrorMessage = "Please enter a State")]
+        public string ClientState { get; set; }
+
+        [Display(Name = "Zip")]
+        [Required(ErrorMessage = "Please enter an address")]
+        public string ClientZip { get; set; }
+
         [Display(Name = "Email")]
         [Required(ErrorMessage = "Please enter an email")]
         public string ClientEmail { get; set; }
