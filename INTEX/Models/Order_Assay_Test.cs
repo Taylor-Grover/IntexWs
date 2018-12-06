@@ -22,13 +22,14 @@ namespace INTEX.Models
         [Key, Column(Order = 2)]
         public int TestID { get; set; }
 
-        
+        [RegularExpression(@"\d+$", ErrorMessage = "Employee ID must be an integer")]
         public int? EmployeeID { get; set; }
 
         [DisplayName("Complete?")]
         public bool? IsComplete  { get; set; }
 
         [DisplayName("Total Cost")]
+        [RegularExpression(@"^\d+\.*\d*$", ErrorMessage = "Total cost should be a number")]
         public double? TotalCost { get; set; }
 
         

@@ -16,11 +16,13 @@ namespace INTEX.Models
         [Display(Name = "Work Order Number")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int WorkOrderNumber { get; set; }
-        
+
         [Display(Name = "Order Date")]
+        [RegularExpression(@"^\d{1,2}\/\d{1,2}\/\d{4}$", ErrorMessage = "Date should be mm/dd/yyyy")]
         public DateTime? OrderDate { get; set; }
   
         [Display(Name = "Due Date")]
+        [RegularExpression(@"^\d{1,2}\/\d{1,2}\/\d{4}$", ErrorMessage = "Date should be mm/dd/yyyy")]
         public DateTime? DueDate { get; set; }
   
         [Display(Name = "Client ID")]
@@ -39,6 +41,7 @@ namespace INTEX.Models
         public bool? Complete { get; set; }
 
         [Display(Name = "LT Number")]
+        [RegularExpression(@"\d{6}$", ErrorMessage = "LT Number should only have 6 numbers")]
         public int? LTNumber { get; set; }
  
         [Display(Name = "Sales Agent ID")]

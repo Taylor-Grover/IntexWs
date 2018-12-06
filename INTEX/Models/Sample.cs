@@ -12,36 +12,44 @@ namespace INTEX.Models
     public class Sample
     {
         [Key]
+        [RegularExpression(@"^\d+", ErrorMessage = "Sequence Code should be an integer")]
         public int SequenceCode { get; set; }
 
         [Display(Name = "Compound Name")]
         public string CompoundName { get; set; }
 
         [Display(Name = "Quantity")]
+        [RegularExpression(@"^\d+\.*\d*$", ErrorMessage = "Quantity should be a number")]
         public double Quantity { get; set; }
 
         [Display(Name = "Date Arrived")]
+        [RegularExpression(@"^\d{1,2}\/\d{1,2}\/\d{4}$", ErrorMessage = "Date should be mm/dd/yyyy")]
         public DateTime DateArrived { get; set; }
 
         [Display(Name = "Employee who received order")]
         public string ReceivedBy { get; set; }
 
         [Display(Name = "Date confirmation sent")]
+        [RegularExpression(@"^\d{1,2}\/\d{1,2}\/\d{4}$", ErrorMessage = "Date should be mm/dd/yyyy")]
         public DateTime DateTimeConfirmed { get; set; }
 
         [Display(Name = "Appearance of Sample")]
         public string Appearance { get; set; }
 
         [Display(Name = "Weight listed by Client")]
+        [RegularExpression(@"^\d+\.*\d*$", ErrorMessage = "Weight should be a number")]
         public double ClientWeight { get; set; }
 
         [Display(Name = "Molecular Mass")]
+        [RegularExpression(@"^\d+\.*\d*$", ErrorMessage = "Molecular Mass should be a number")]
         public double MolecularMass { get; set; }
 
         [Display(Name = "Actual Weight")]
+        [RegularExpression(@"^\d+\.*\d*$", ErrorMessage = "Actual Weight should be a number")]
         public double ActualWeight { get; set; }
 
         [Display(Name = "Maximum Tolerated Dose")]
+        [RegularExpression(@"^\d+\.*\d*$", ErrorMessage = "MTD should be a number")]
         public double MTD { get; set; }
     }
 }

@@ -191,13 +191,21 @@ namespace INTEX.Controllers
         [HttpPost]
         public ActionResult Login(string username, string password)
         {
+            bool isFound = false;
+
             Client currClient = new Client();
-           foreach(var item in db.Clients)
+            foreach(var item in db.Clients)
             {
                 if(item.ClientEmail == username)
                 {
                     currClient = item;
+                    isFound = true;
                 }
+
+            }
+            if (isFound == false)
+            {
+                return View();
             }
 
 
@@ -207,11 +215,10 @@ namespace INTEX.Controllers
                
                 return RedirectToAction("displayAccount","Accounts", new { CID = currClient.ClientID });
             }
-            else { 
-
-
-            return View();
-        }
+            else
+            { 
+                return View();
+            }
         }
 
         [HttpGet]

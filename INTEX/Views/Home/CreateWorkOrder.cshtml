@@ -1,0 +1,17 @@
+﻿@model INTEX.Models.NewWorkOrder
+
+@{
+    ViewBag.Title = "CreateWorkOrder";
+}
+
+<h2>CreateWorkOrder</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.client.ClientFirstName)
+        </div>
+    </div>
+}
