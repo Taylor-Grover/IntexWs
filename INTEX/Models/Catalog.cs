@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using System.ComponentModel.DataAnnotations;
+
 using System.Linq;
 using System.Web;
 
@@ -8,6 +10,7 @@ namespace INTEX.Models
 {
     public class Catalog
     {
+
         [Key]
         public int AssayID { get; set; }
         [Display(Name = "Assay Description")]
@@ -26,5 +29,6 @@ namespace INTEX.Models
         public double BaseCost { get; set; }
         [Display(Name = "Procedure")]
         public string Description { get; set; }
+
     }
 }

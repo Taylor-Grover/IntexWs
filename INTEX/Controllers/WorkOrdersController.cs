@@ -88,6 +88,8 @@ namespace INTEX.Controllers
         {
             if (ModelState.IsValid)
             {
+                db.Database.ExecuteSqlCommand("INSERT INTO WorkOrder_Compound (LTNumber) " +
+                    "VALUES (" + workOrder.LTNumber + ")");
                 db.Entry(workOrder).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

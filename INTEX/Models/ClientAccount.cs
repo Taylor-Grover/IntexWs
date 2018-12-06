@@ -23,6 +23,9 @@ namespace INTEX.Models
 
         public string Password { get; set; }
 
+        [Display(Name = "Company Name")]
+        public string CompanyName { get; set; }
+
         [Display(Name = "First Name")]
         public string ClientFirstName { get; set; }
 

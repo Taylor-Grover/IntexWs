@@ -49,7 +49,7 @@ namespace INTEX.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ClientID,ClientFirstName,ClientLastName,ClientAddress,ClientCity,ClientState,ClientZip,ClientEmail,ClientPhone,SpecialCondition")] Client client)
+        public ActionResult Create([Bind(Include = "ClientID,CompanyName,ClientFirstName,ClientLastName,ClientAddress,ClientCity,ClientState,ClientZip,ClientEmail,ClientPhone,SpecialCondition")] Client client)
         {
             if (ModelState.IsValid)
             {
@@ -106,6 +106,7 @@ namespace INTEX.Controllers
 
         public ActionResult Catalog()
         {
+
             IEnumerable<Catalog> companyCatalog = db.Database.SqlQuery<Catalog>(
            "SELECT A.AssayID, AssayDescription, AssayProtocol, CompletionEstimate, IsRequired, Conditional, TestName, BaseCost, P.Description " +
            "FROM Assay A " +
@@ -113,6 +114,9 @@ namespace INTEX.Controllers
            "INNER JOIN Procedures P ON TP.ProdedureID = P.ProdedureID " +
            "ORDER BY A.AssayID");
             return View(companyCatalog);
+
+            return View();
+
         }
 
     }
