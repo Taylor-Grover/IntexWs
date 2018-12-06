@@ -8,6 +8,7 @@ using System.Web;
 
 namespace INTEX.Models
 {
+    //This model allows the system to create the catalog
     public class Catalog
     {
 

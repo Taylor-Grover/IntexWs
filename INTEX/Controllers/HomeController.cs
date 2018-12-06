@@ -6,13 +6,17 @@ using System.Web;
 using System.Web.Mvc;
 using INTEX.Models;
 
-
+//Authors: The Magical Designer: Rhett Burton, The Wise Problem Solver: Isaac White, The Beast at Coding: Taylor Grover, the SQL Guy and Assistant to the Beast: Justin Schwendiman
+//Program Description: This is a prototype website that allows Northwest Labs to perform many of the functions needed to be successful. As this is just a prototype, not all functions are present, but the database makes it possible to implement more functions
 namespace INTEX.Controllers
 {
     public class HomeController : Controller
     {
+        //This variable allows a user to login to their accounts
         private static bool login = false;
         private Northwest_LabsContext db = new Northwest_LabsContext();
+
+        //This list of assays allows the program to keep track of the assays a user orders in a single workorder. This is displayed in the summary view in this controller.
         private static List<Assay> misAssays = new List<Assay>();
 
         public ActionResult Index()
@@ -34,6 +38,7 @@ namespace INTEX.Controllers
             return View();
         }
 
+        //This is the action method that receives a Work Order Number parameter that continues to get passed throughout the program. This particular method shows the user all of the possible assays they can choose from
         public ActionResult displayAssays(int? myWorkOrderID)
         {
             ViewBag.myWorkOrderID = myWorkOrderID;
@@ -46,6 +51,7 @@ namespace INTEX.Controllers
             return View();
         }
 
+        //This action method allows a client to create an account via the form provided.
         // POST: Clients/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -64,14 +70,17 @@ namespace INTEX.Controllers
             return View(client);
         }
 
+        //This action method allows the 
         public ActionResult ClientOrders(int CID)
         {
             ViewBag.CID = CID;
             return View(db.WorkOrders.ToList());
         }
 
+        //This takes the user to the summary view, receiving parameters of WorkOrderNumber, ClientID, and AssayID. These allow the program to access the correct assays that should be displayed in the view
         public ActionResult Summary(int WOID, int CID, int AID)
         {
+            //The following sequel query gathers every assay on a given work order
             IEnumerable<Assay> myAssays = db.Database.SqlQuery<Assay>(
                "SELECT DISTINCT Assay.AssayID, AssayDescription, AssayProtocol, CompletionEstimate " +
                "FROM Assay INNER JOIN Order_Assay_Test ON Assay.AssayID = Order_Assay_Test.AssayID " +
@@ -88,6 +97,7 @@ namespace INTEX.Controllers
             return View(misAssays);
         }
 
+        //This action method takes the user to the confirmation view. The method receives the ClientID and thanks the user for making an order.
         public ActionResult Confirmation( int CID)
         {
             misAssays.Clear();
@@ -97,6 +107,7 @@ namespace INTEX.Controllers
             return View();
         }
 
+        //This is the action method to display the estimated price for every assay so that a user can get an idea of pricing. This can be developed into a more in depth 'get a quote' function
         public ActionResult Quote()
         {
           IEnumerable<Quote> myQuotes = db.Database.SqlQuery<Quote>(
@@ -105,9 +116,11 @@ namespace INTEX.Controllers
             return View(myQuotes);
         }
 
+        //This action method displays every assay avaible by Northwest Labs. It includes some information about the assay so the user can see what Northwest Labs has to offer
         public ActionResult Catalog()
         {
 
+            //This SQL query essentially creates a list of Catalog objects. It includes all the information needed for the user to see, including info about each test procedure that makes up an assay. If the project is approved, this will need further work
             IEnumerable<Catalog> companyCatalog = db.Database.SqlQuery<Catalog>(
            "SELECT A.AssayID, AssayDescription, AssayProtocol, CompletionEstimate, IsRequired, Conditional, TestName, BaseCost, P.Description " +
            "FROM Assay A " +
@@ -118,6 +131,7 @@ namespace INTEX.Controllers
 
         }
 
+        //Allows for login by all Employees. This feature is not fully functional
        [HttpGet]
        public ActionResult EmployeeLogin()
         {
@@ -129,9 +143,9 @@ namespace INTEX.Controllers
         {
             return RedirectToAction("Index", "WorkOrders");
         }
-       
 
 
+        //Allows for login by Seattle Employees. This feature is not fully functional
         [HttpGet]
         public ActionResult LoginSeat()
         {
@@ -165,7 +179,7 @@ namespace INTEX.Controllers
             }
         }
 
-
+        //Allows for login by Singapore Employees. This feature is not fully functional
         [HttpGet]
         public ActionResult LoginSing()
         {

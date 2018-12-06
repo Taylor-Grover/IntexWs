@@ -6,6 +6,7 @@ using System.Web;
 
 namespace INTEX.Models
 {
+    //This model allows the system to build a new client account
     public class ClientAccount
     {
         [Key]

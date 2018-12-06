@@ -15,12 +15,14 @@ namespace INTEX.Controllers
     {
         private Northwest_LabsContext db = new Northwest_LabsContext();
 
+        //see all work orders
         // GET: WorkOrders
         public ActionResult Index()
         {
             return View(db.WorkOrders.ToList());
         }
 
+        //see the details of an individual work order
         // GET: WorkOrders/Details/5
         public ActionResult Details(int? id)
         {
@@ -36,6 +38,7 @@ namespace INTEX.Controllers
             return View(workOrder);
         }
 
+        //create a new work order
         // GET: WorkOrders/Create
         public ActionResult Create(int ClientID)
         {
@@ -64,6 +67,7 @@ namespace INTEX.Controllers
             return View(workOrder);
         }
 
+        //edit an existing work order
         // GET: WorkOrders/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -88,6 +92,7 @@ namespace INTEX.Controllers
         {
             if (ModelState.IsValid)
             {
+                //This SQL statement adds an LTNumber to the work order
                 db.Database.ExecuteSqlCommand("INSERT INTO WorkOrder_Compound (LTNumber) " +
                     "VALUES (" + workOrder.LTNumber + ")");
                 db.Entry(workOrder).State = EntityState.Modified;
@@ -97,6 +102,7 @@ namespace INTEX.Controllers
             return View(workOrder);
         }
 
+        //delete an existing work order
         // GET: WorkOrders/Delete/5
         public ActionResult Delete(int? id)
         {

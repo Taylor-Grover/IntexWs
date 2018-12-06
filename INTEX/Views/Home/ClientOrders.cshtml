@@ -16,6 +16,8 @@
                 Order Number: <b>@item.WorkOrderNumber</b>
                 <p style="padding:5px">Order Date: <b>@item.OrderDate</b></p>
                 <p style="padding:5px">Compound Name: <b style="color:darkgreen">@item.CompoundName</b></p>
+
+                <!--This if statement allows for tracking based on how far the database has been updated.-->
                 @if (item.LTNumber == null)
                 {
                 <p style="padding:15px">Compound is en route to the lab</p>
