@@ -2,22 +2,23 @@
     ViewBag.Title = "Login";
 }
 <div class="white">
-    <h2>Login</h2>
+    <h2 class="w3-center">Login to Your Portal</h2>
     <br />
-    <br />
-    @using (Html.BeginForm())
+    
+    <div class="w3-card-4 w3-blue-gray" style="padding:15px">
+        @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
         <div class="row">
             <div class="col-sm-2">
-                @Html.Label("User Name:")
+                @Html.Label("Email:")
             </div>
             <div class="col-sm-6">
                 @Html.TextBox("username", null, new { @class = "form-control" })
             </div>
         </div>
         <br />
-        <br />
+
         <div class="row">
             <div class="col-sm-2">
                 @Html.Label("Password:")
@@ -31,10 +32,11 @@
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <br />
-                    <br />
-                    <input type="submit" value="Submit" class="btn btn-default" />
+                    
+                    <input type="submit" value="Submit" class="btn btn-success" />
                 </div>
             </div>
         </div>
-    }
+}
+    </div>
 </div>

@@ -1,14 +1,18 @@
-﻿@model INTEX.Models.ClientAccount
+@model INTEX.Models.ClientAccount
 
 @{
     ViewBag.Title = "displayAccount";
 }
 
-<h2 class=" w3-center" style="background-color:#607d8b!important">
+
+<h1 class=" w3-center" style="background-color:#607d8b!important">
+
+
     @Model.CompanyName
+
     @Model.ClientFirstName 
     @Model.ClientLastName <br />
-</h2>
+</h1>
 <br />
 <div class="container">
     <div class="row">
@@ -20,7 +24,7 @@
             <div class="w3-card-2">
                 
 
-                <p class="  w3-center" style="font-size:25px">$@Model.AccountBalance.00</p>
+                <p class="  w3-center" style="font-size:25px"><b>$@Model.AccountBalance.00</b></p>
 
             </div>
 
@@ -32,8 +36,8 @@
 
         <div class="col-md-3 w3-card-4 w3-blue-gray " >
             <p>Orders placed with Northwest Labs:</p>
-            <p class="w3-center" style="font-size:25px"> @Model.NumberofOrders</p>
-            <p>**Remember certain order volume measures result in order Discounts**</p>
+            <p class="w3-center" style="font-size:25px"><b>@Model.NumberofOrders</b> </p>
+            <p>**Remember certain order volumes result in order discounts**</p>
         </div>
 
     </div>
@@ -45,7 +49,7 @@
             <p class="w3-center" style="font-size:25px">Sam Smith</p>
             <p style="font-size:20px;padding-left:200px">(801)576-0977</p>
             <br />
-            
+            <p style="padding-bottom:10px; padding-left:450px"><a  class="btn btn-md btn-success" href="@Url.Action("Create", "WorkOrders", new { ClientID = Model.ClientID})">Contact</a></p>
 
         </div>
 
@@ -63,10 +67,12 @@
 
 <row class="row">
     <div class="col-xs-4">
-        <a class="btn btn-lg " style="background-color:#607d8b!important" href="@Url.Action("ClientOrders", "Home", new { CID = Model.ClientID})">Track My Orders</a>
+       <p style="padding-right:50px"><a class="btn btn-lg " style="background-color:#607d8b!important" href="@Url.Action("ClientOrders", "Home", new { CID = Model.ClientID})">Track My Orders</a></p>
     </div>
     <div class="col-xs-4">
-        <a class="btn btn-lg " style="background-color:#607d8b!important" href="@Url.Action("Quote", "Home")">Get a Quote</a>
+
+        <p style="padding-left:50px"><a class="btn btn-lg " style="background-color:#607d8b!important" href="">Get a Quote</a></p>
+
     </div>
     <div class="col-xs-4">
         <a class="btn btn-lg" style="background-color:#607d8b!important" href="@Url.Action("Create", "WorkOrders", new { ClientID = Model.ClientID})">Create a New Order</a>

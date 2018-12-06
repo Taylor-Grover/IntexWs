@@ -4,7 +4,11 @@
 }
 
 <h2>Confirmation</h2>
-
-<p>THANKS FOR YOUR ORDER!</p>
 <br />
-<a href="@Url.Action("displayAccount", "Accounts", new { @*WOID = ViewBag.WOID,*@ CID = ViewBag.CID})">FINISH</a>
+<p>Thanks for your order!</p>
+<p>To follow your order's progress through our research process,
+    <br />
+    utilize the "Track Orders" function within your customer portal!
+    </p>
+<br />
+<a class="btn btn-lg btn-success" href="@Url.Action("displayAccount", "Accounts", new { @*WOID = ViewBag.WOID,*@ CID = ViewBag.CID})">FINISH</a>
