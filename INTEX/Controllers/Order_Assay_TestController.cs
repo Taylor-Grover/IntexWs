@@ -60,7 +60,15 @@ namespace INTEX.Controllers
                 db.Order_Assay_Test.Add(record);
                 db.SaveChanges();
             }
-            Client myClient = db.Clients.Find(workOrderID);
+            int CID = 0; 
+            foreach(var item in db.WorkOrders)
+            {
+                if(item.WorkOrderNumber == workOrderID)
+                {
+                     CID = item.ClientID;
+                }
+            }
+            Client myClient = db.Clients.Find(CID);
             return RedirectToAction("Summary", "Home", new { WOID = workOrderID, CID = myClient.ClientID, AID = AssayID });
            
 
