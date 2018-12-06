@@ -35,22 +35,24 @@
                         @Html.DisplayFor(modelItem => item.TestName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.BaseCost)
+                        $@Html.DisplayFor(modelItem => item.BaseCost)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Description)
                     </td>
                     <td>
                         <p>This test will only run if specific trigger conditions are met. If the test is run, you will be charged additional costs. Do you want to run this test regardless of the triggers?</p>
-                        @Html.DropDownList("Response",
+                        <div style="color:black">
+                            @Html.DropDownList("Response",
 new SelectList(
 new[]
 {
-                        new { Value = "true", Text = "Yes" },
-                        new { Value = "false", Text = "No"},
-                 },
-                 "Value",
-                 "Text"))
+                       new { Value = "false", Text = "No" },
+                       new { Value = "true", Text = "Yes"},
+                },
+                "Value",
+                "Text"))
+                                            </div>
                         <br />
                     </td>
                     
@@ -63,7 +65,7 @@ new[]
                         @Html.DisplayFor(modelItem => item.TestName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.BaseCost)
+                        $@Html.DisplayFor(modelItem => item.BaseCost)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Description)

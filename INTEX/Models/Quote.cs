@@ -10,11 +10,11 @@ namespace INTEX.Models
     {
         [Key]
         public int AssayID { get; set; }
- 
+        [Display(Name = "Assay Description")]
         public string AssayDescription { set; get; }
-
+        [Display(Name = "Protocol")]
         public string AssayProtocol { set; get; }
-
+        [Display(Name = "Estimated Cost")]
         public double AssayCost { set; get; }
 
 
