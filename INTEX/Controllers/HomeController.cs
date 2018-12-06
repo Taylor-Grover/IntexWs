@@ -11,6 +11,7 @@ namespace INTEX.Controllers
 {
     public class HomeController : Controller
     {
+        private static bool login = false;
         private Northwest_LabsContext db = new Northwest_LabsContext();
         private static List<Assay> misAssays = new List<Assay>();
         public ActionResult Index()
@@ -91,6 +92,7 @@ namespace INTEX.Controllers
         public ActionResult Confirmation( int CID)
         {
             misAssays.Clear();
+
             ViewBag.CID = CID;
             return View();
         }
@@ -128,6 +130,74 @@ namespace INTEX.Controllers
             return RedirectToAction("Index", "WorkOrders");
         }
        
+
+
+        [HttpGet]
+        public ActionResult LoginSeat()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult LoginSeat(string username, string password)
+        {
+            Client currClient = new Client();
+            foreach (var item in db.Clients)
+            {
+                if (item.ClientEmail == username)
+                {
+                    currClient = item;
+                }
+            }
+
+
+            if (username != null && password != null)
+            {
+                login = true;
+
+                return RedirectToAction("displayAccount", "Accounts", new { CID = currClient.ClientID });
+            }
+            else
+            {
+
+
+                return View();
+            }
+        }
+
+
+        [HttpGet]
+        public ActionResult LoginSing()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult LoginSing(string username, string password)
+        {
+            Client currClient = new Client();
+            foreach (var item in db.Clients)
+            {
+                if (item.ClientEmail == username)
+                {
+                    currClient = item;
+                }
+            }
+
+
+            if (username != null && password != null)
+            {
+                login = true;
+
+                return RedirectToAction("displayAccount", "Accounts", new { CID = currClient.ClientID });
+            }
+            else
+            {
+
+
+                return View();
+            }
+        }
 
     }
 }
