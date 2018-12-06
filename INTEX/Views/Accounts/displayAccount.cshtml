@@ -4,22 +4,70 @@
     ViewBag.Title = "displayAccount";
 }
 
-<h2>
-    @Model.ClientFirstName <br />
+<h2 class=" w3-center" style="background-color:#607d8b!important">
+    @Model.ClientFirstName 
     @Model.ClientLastName <br />
-    @Model.AccountID <br />
-    @Model.AccountBalance<br />
-    @Model.NumberofOrders<br />
 </h2>
+<br />
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-6 w3-card-4 w3-blue-gray "  >
+            <p>Account ID:@Model.AccountID </p>
+            <br />
+            <p> Account Balance: </p>
+            <div class="w3-card-2">
+                
+
+                <p class="  w3-center" style="font-size:25px">$@Model.AccountBalance.00</p>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="col-md-2"></div>
+
+        <div class="col-md-3 w3-card-4 w3-blue-gray " >
+            <p>Orders placed with Northwest Labs:</p>
+            <p class="w3-center" style="font-size:25px"> @Model.NumberofOrders</p>
+            <p>**Remember certain order volume measures result in order Discounts**</p>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6 w3-card-4 w3-blue-gray " >
+            <p>My Connection to NorthWest Labs</p>
+            <p class="w3-center" style="font-size:25px">Sam Smith</p>
+            <p style="font-size:20px;padding-left:200px">(801)576-0977</p>
+            <br />
+            
+
+        </div>
+
+
+        <div class="col-md-2"></div>
+
+        <div class="col-md-3">
+            
+            <p class="w3-center" style="font-size:25px"> </p>
+            
+        </div>
+
+    </div>
+</div>
 
 <row class="row">
-    <div class="col-md-4">
-        <a class="btn btn-lg btn-primary" href="@Url.Action("ClientOrders", "Home", new { CID = Model.ClientID})">Track My Orders</a>
+    <div class="col-xs-4">
+        <a class="btn btn-lg " style="background-color:#607d8b!important" href="@Url.Action("ClientOrders", "Home", new { CID = Model.ClientID})">Track My Orders</a>
     </div>
-    <div class="col-md-4">
-        <a class="btn btn-lg btn-primary" href="">Get a Quote</a>
+    <div class="col-xs-4">
+        <a class="btn btn-lg " style="background-color:#607d8b!important" href="">Get a Quote</a>
     </div>
-    <div class="col-md-4">
-        <a class="btn btn-lg btn-primary" href="@Url.Action("Create", "WorkOrders", new { ClientID = Model.ClientID})">Create a New Order</a>
+    <div class="col-xs-4">
+        <a class="btn btn-lg" style="background-color:#607d8b!important" href="@Url.Action("Create", "WorkOrders", new { ClientID = Model.ClientID})">Create a New Order</a>
     </div>
 </row>
