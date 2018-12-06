@@ -116,6 +116,16 @@ namespace INTEX.Controllers
             return View(myQuotes);
         }
 
+
+        //This allows a user already logged in to see a quote estimate without having to go back through the home page. It receives a client id parameter that allows the client to be maintained
+        public ActionResult QuoteA(int? CID)
+        {
+            IEnumerable<Quote> myQuotes = db.Database.SqlQuery<Quote>(
+           "SELECT Query1.AssayID, Query1.AssayDescription, Query1.AssayProtocol, (Cost1 + TotCost) AS AssayCost FROM (SELECT A.AssayID, A.AssayDescription, A.AssayProtocol, (SUM(BaseCost)+((SELECT AVG(Lab_Employee.HourlyWage) FROM Lab_Employee)*CompletionEstimate)) AS Cost1 From Assay A INNER JOIN Assay_Test ATe ON A.AssayID = ATe.AssayID INNER JOIN Test T ON ATe.TestID = T.TestID GROUP BY A.AssayID, A.AssayDescription, A.CompletionEstimate, A.AssayProtocol) AS Query1, (SELECT AssayID, SUM(TM.MatAmount*Cost) AS TotCost FROM Material M INNER JOIN Test_Material TM ON M.MaterialID = TM.MaterialID INNER JOIN Test T ON TM.TestID = T.TestID INNER JOIN Assay_Test Ate ON T.TestID = Ate.TestID GROUP BY Ate.AssayID) AS Query2 WHERE Query1.AssayID = Query2.AssayID");
+            ViewBag.CID = CID;
+            return View(myQuotes);
+        }
+
         //This action method displays every assay avaible by Northwest Labs. It includes some information about the assay so the user can see what Northwest Labs has to offer
         public ActionResult Catalog()
         {
@@ -135,7 +145,7 @@ namespace INTEX.Controllers
        [HttpGet]
        public ActionResult EmployeeLogin()
         {
-            return View();
+            return View("LoginSing");
         } 
 
         [HttpPost]
