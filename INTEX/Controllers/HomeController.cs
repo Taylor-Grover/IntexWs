@@ -141,7 +141,7 @@ namespace INTEX.Controllers
 
         }
 
-        //Allows for login by all Employees. This feature is not fully functional
+        //Allows for login by all Lab Employees in Singapore. This feature is not fully functional
        [HttpGet]
        public ActionResult EmployeeLogin()
         {
@@ -154,6 +154,18 @@ namespace INTEX.Controllers
             return RedirectToAction("Index", "WorkOrders");
         }
 
+        //Allows for login by all Employees. This feature is not fully functional
+        [HttpGet]
+        public ActionResult EmployeeLogin1()
+        {
+            return View("LoginSeat");
+        }
+
+        [HttpPost]
+        public ActionResult EmployeeLogin1(string username, string password)
+        {
+            return RedirectToAction("Index", "Clients");
+        }
 
         //Allows for login by Seattle Employees. This feature is not fully functional
         [HttpGet]

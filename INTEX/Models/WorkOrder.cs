@@ -18,11 +18,9 @@ namespace INTEX.Models
         public int WorkOrderNumber { get; set; }
 
         [Display(Name = "Order Date")]
-        [RegularExpression(@"^\d{1,2}\/\d{1,2}\/\d{4}$", ErrorMessage = "Date should be mm/dd/yyyy")]
         public DateTime? OrderDate { get; set; }
   
         [Display(Name = "Due Date")]
-        [RegularExpression(@"^\d{1,2}\/\d{1,2}\/\d{4}$", ErrorMessage = "Date should be mm/dd/yyyy")]
         public DateTime? DueDate { get; set; }
   
         [Display(Name = "Client ID")]

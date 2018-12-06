@@ -23,14 +23,12 @@ namespace INTEX.Models
         public double Quantity { get; set; }
 
         [Display(Name = "Date Arrived")]
-        [RegularExpression(@"^\d{1,2}\/\d{1,2}\/\d{4}$", ErrorMessage = "Date should be mm/dd/yyyy")]
         public DateTime DateArrived { get; set; }
 
         [Display(Name = "Employee who received order")]
         public string ReceivedBy { get; set; }
 
         [Display(Name = "Date confirmation sent")]
-        [RegularExpression(@"^\d{1,2}\/\d{1,2}\/\d{4}$", ErrorMessage = "Date should be mm/dd/yyyy")]
         public DateTime DateTimeConfirmed { get; set; }
 
         [Display(Name = "Appearance of Sample")]
