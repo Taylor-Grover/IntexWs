@@ -160,6 +160,7 @@ namespace INTEX.Controllers
                 clientaccount.AccountBalance = myAccount.AccountBalance;
                 clientaccount.ClientAddress = currClient.ClientAddress;
                 clientaccount.ClientEmail = currClient.ClientEmail;
+                clientaccount.CompanyName = currClient.CompanyName;
                 clientaccount.ClientFirstName = currClient.ClientFirstName;
                 clientaccount.ClientLastName = currClient.ClientLastName;
                 clientaccount.ClientID = currClient.ClientID;
