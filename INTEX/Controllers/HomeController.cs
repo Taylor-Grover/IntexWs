@@ -11,6 +11,7 @@ namespace INTEX.Controllers
 {
     public class HomeController : Controller
     {
+        private static bool login = false;
         private Northwest_LabsContext db = new Northwest_LabsContext();
         private static List<Assay> misAssays = new List<Assay>();
 
@@ -56,8 +57,7 @@ namespace INTEX.Controllers
             {
                 db.Clients.Add(client);
                 db.SaveChanges();
-                //int tempID = client.ClientID;
-                //return RedirectToAction("Create", "WorkOrders", new {ClientID = tempID });
+
                 return RedirectToAction("newAccount", "Accounts", client);
             }
 
@@ -88,9 +88,10 @@ namespace INTEX.Controllers
             return View(misAssays);
         }
 
-        public ActionResult Confirmation(/*int WOID,*/ int CID)
+        public ActionResult Confirmation( int CID)
         {
-            //ViewBag.WOID = WOID;
+            misAssays.Clear();
+
             ViewBag.CID = CID;
             misAssays.Clear();
             return View();
@@ -114,6 +115,89 @@ namespace INTEX.Controllers
            "INNER JOIN Procedures P ON TP.ProdedureID = P.ProdedureID " +
            "ORDER BY A.AssayID");
             return View(companyCatalog);
+
+        }
+
+       [HttpGet]
+       public ActionResult EmployeeLogin()
+        {
+            return View();
+        } 
+
+        [HttpPost]
+        public ActionResult EmployeeLogin(string username, string password)
+        {
+            return RedirectToAction("Index", "WorkOrders");
+        }
+       
+
+
+        [HttpGet]
+        public ActionResult LoginSeat()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult LoginSeat(string username, string password)
+        {
+            Client currClient = new Client();
+            foreach (var item in db.Clients)
+            {
+                if (item.ClientEmail == username)
+                {
+                    currClient = item;
+                }
+            }
+
+
+            if (username != null && password != null)
+            {
+                login = true;
+
+                return RedirectToAction("displayAccount", "Accounts", new { CID = currClient.ClientID });
+            }
+            else
+            {
+
+
+                return View();
+            }
+        }
+
+
+        [HttpGet]
+        public ActionResult LoginSing()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult LoginSing(string username, string password)
+        {
+            Client currClient = new Client();
+            foreach (var item in db.Clients)
+            {
+                if (item.ClientEmail == username)
+                {
+                    currClient = item;
+                }
+            }
+
+
+            if (username != null && password != null)
+            {
+                login = true;
+
+                return RedirectToAction("displayAccount", "Accounts", new { CID = currClient.ClientID });
+            }
+            else
+            {
+
+
+                return View();
+            }
+
         }
 
     }

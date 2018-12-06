@@ -190,6 +190,7 @@
     <Content Include="Content\Images\moretests.jpg" />
     <Content Include="Content\Images\myfavetest.jpg" />
     <Content Include="Content\Images\testtube.jpg" />
+    <Content Include="Content\MyStyles.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -275,6 +276,12 @@
     <Content Include="Views\Home\Confirmation.cshtml" />
     <Content Include="Views\Home\Quote.cshtml" />
     <Content Include="Views\Home\Catalog.cshtml" />
+
+    <Content Include="Views\Home\LoginSing.cshtml" />
+    <Content Include="Views\Home\LoginSeat.cshtml" />
+
+    <Content Include="Views\Home\EmployeeLogin.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

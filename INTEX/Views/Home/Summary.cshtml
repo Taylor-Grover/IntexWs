@@ -39,8 +39,8 @@
     </table>
 </div>
 <br />
-<p>Would you like to order more Assays???</p>
+<p>Would you like to order more Assays?</p>
 
 <a class="btn btn-sm btn-success" href="@Url.Action("displayAssays", "Home", new { myWorkOrderID = ViewBag.WOID})">YES</a>
 
-<a class="btn btn-sm btn-danger" href="@Url.Action("Confirmation", "Home", new { @*WOID = ViewBag.WOID,*@ CID = ViewBag.CID})">NO</a>
+<a class="btn btn-sm btn-danger" href="@Url.Action("Confirmation", "Home", new {  CID = ViewBag.CID})">NO</a>

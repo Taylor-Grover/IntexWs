@@ -7,6 +7,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="~/Content/MyStyles.css" rel="stylesheet" />
 </head>
 <body class="w3-dark-gray">
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -23,8 +24,8 @@
                 <ul class="nav navbar-nav" style="float:right">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Singapore", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Seattle", "About", "Home")</li>
+                    <li>@Html.ActionLink("Singapore", "LoginSing", "Home")</li>
+                    <li>@Html.ActionLink("Seattle", "LoginSeat", "Home")</li>
                    
              
                 </ul>
