@@ -92,12 +92,15 @@ namespace INTEX.Controllers
         {
             if (ModelState.IsValid)
             {
-                //This SQL statement adds an LTNumber to the work order
-                db.Database.ExecuteSqlCommand("INSERT INTO WorkOrder_Compound (LTNumber) " +
-                    "VALUES (" + workOrder.LTNumber + ")");
-                db.Entry(workOrder).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (workOrder.LTNumber != null)
+                {
+                    //This SQL statement adds an LTNumber to the work order
+                    db.Database.ExecuteSqlCommand("INSERT INTO WorkOrder_Compound (LTNumber) " +
+                        "VALUES (" + workOrder.LTNumber + ")");
+                    db.Entry(workOrder).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
             return View(workOrder);
         }
